@@ -1,0 +1,1 @@
+每个模型的材质shadow记得要改成，unlit/transparent/cutout，这样引擎才会渲染出它原本的高质量贴图
