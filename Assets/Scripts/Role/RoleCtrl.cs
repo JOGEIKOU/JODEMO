@@ -36,6 +36,12 @@ public class RoleCtrl : MonoBehaviour
     void Start()
     {
         m_CharacterController = GetComponent<CharacterController>();
+
+
+        if(CameraCtrl.Instance != null)
+        {
+            CameraCtrl.Instance.Init();
+        }
     }
 
     // Update is called once per frame
@@ -76,24 +82,30 @@ public class RoleCtrl : MonoBehaviour
         }
 
         //右クリック　もの拾い
-        //if(Input.GetMouseButtonUp(1))
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit[] hitArr = Physics.RaycastAll(ray , Mathf.Infinity, 1 << LayerMask.NameToLayer("Item"));
+        if (Input.GetMouseButtonUp(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //RaycastHit[] hitArr = Physics.RaycastAll(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("Item"));
 
-        //    if(hitArr.Length > 0)
-        //    {
-        //        for (int i = 0; i < hitArr.Length; i++)
-        //        {
-        //            Debug.Log(hitArr[i].collider.gameObject.name + "を見つけました。");
-        //        }            
-        //    }
+            //if (hitArr.Length > 0)
+            //{
+            //    for (int i = 0; i < hitArr.Length; i++)
+            //    {
+            //        Debug.Log(hitArr[i].collider.gameObject.name + "を見つけました。");
+            //    }
+            //}
 
-        //    //if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Item")))
-        //    //{
-        //    //    Debug.Log(hit.collider.gameObject.name + "を見つけた");
-        //    //}           
-        //}
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Item")))
+            {
+                BoxCtrl boxCtrl = hit.collider.GetComponent<BoxCtrl>();
+                if(boxCtrl != null)
+                {
+                    boxCtrl.Hit();
+                }
+                Debug.Log(hit.collider.gameObject.name + "を見つけた");
+            }
+        }
 
         if (Input.GetMouseButtonUp(1))
         {
@@ -107,14 +119,11 @@ public class RoleCtrl : MonoBehaviour
             }
         }
 
-
-
         //地面と当たる
         if(!m_CharacterController.isGrounded)
         {
             m_CharacterController.Move((transform.position + new Vector3(0, -1000, 0)) - transform.position);
         }
-
 
         //もしターゲットのポジションと原点同じじゃない
         if (m_TargetPos != Vector3.zero)
@@ -136,12 +145,53 @@ public class RoleCtrl : MonoBehaviour
             }
         }
 
+
+        CameraAutoFollow();
+
+
     }
 
-    private void OnDrawGizmos()
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, 1);
+    //}
+
+    private void CameraAutoFollow()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 1);
+        if (CameraCtrl.Instance == null) return;
+
+        CameraCtrl.Instance.transform.position = gameObject.transform.position;
+        CameraCtrl.Instance.AutoLookAt(gameObject.transform.position);
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            CameraCtrl.Instance.SetCameraRotate(0);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            CameraCtrl.Instance.SetCameraRotate(1);
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            CameraCtrl.Instance.SetCameraUpAndDown(0);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            CameraCtrl.Instance.SetCameraUpAndDown(1);
+        }
+
+        if (Input.GetKey(KeyCode.I))
+        {
+            CameraCtrl.Instance.SetCameraZoom(-1);
+        }
+        else if (Input.GetKey(KeyCode.L))
+        {
+            CameraCtrl.Instance.SetCameraZoom(1);
+        }
     }
+
+
 
 }

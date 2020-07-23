@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BoxCtrl : MonoBehaviour
 {
-    /// <summary>
-    /// ターゲットのポジション
-    /// </summary>
-    private Vector3 m_TargetPos = Vector3.zero;
+    ///// <summary>
+    ///// ターゲットのポジション
+    ///// </summary>
+    //private Vector3 m_TargetPos = Vector3.zero;
 
-    /// <summary>
-    /// 移動速度
-    /// </summary>
-    private float m_Speed = 1F;
+    ///// <summary>
+    ///// 移動速度
+    ///// </summary>
+    //private float m_Speed = 1F;
+
+
+    public System.Action<GameObject> OnHit;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,7 @@ public class BoxCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.localPosition = gameObject.transform.localPosition + new Vector3(0, -1 * m_Speed*Time.deltaTime, 0);
+        //gameObject.transform.localPosition = gameObject.transform.localPosition + new Vector3(0, -1 * m_Speed*Time.deltaTime, 0);
 
         #region 移動操作
         /*
@@ -61,33 +64,44 @@ public class BoxCtrl : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision info)
+    public void Hit()
     {
-        Debug.Log("OnCollisionEnter！！！" + info.collider.gameObject.name);
+        if(OnHit != null)
+        {
+            OnHit(gameObject);
+        }
     }
 
-    private void OnCollisionStay(Collision info)
-    {
-        Debug.Log("OnCollisionStay！！！" + info.collider.gameObject.name);
-    }
 
-    private void OnCollisionExit(Collision info)
-    {
-        Debug.Log("OnCollisionExit！！！" + info.collider.gameObject.name);
-    }
+    #region 当たり判定
+    //private void OnCollisionEnter(Collision info)
+    //{
+    //    Debug.Log("OnCollisionEnter！！！" + info.collider.gameObject.name);
+    //}
 
-    private void OnTriggerEnter(Collider info)
-    {
-        Debug.Log("OnTriggerEnter！！！" + info.gameObject.name);
-    }
+    //private void OnCollisionStay(Collision info)
+    //{
+    //    Debug.Log("OnCollisionStay！！！" + info.collider.gameObject.name);
+    //}
 
-    private void OnTriggerStay(Collider info)
-    {
-        Debug.Log("OnTriggerStay！！！" + info.gameObject.name);
-    }
+    //private void OnCollisionExit(Collision info)
+    //{
+    //    Debug.Log("OnCollisionExit！！！" + info.collider.gameObject.name);
+    //}
 
-    private void OnTriggerExit(Collider info)
-    {
-        Debug.Log("OnTriggerExit！！！" + info.gameObject.name);
-    }
+    //private void OnTriggerEnter(Collider info)
+    //{
+    //    Debug.Log("OnTriggerEnter！！！" + info.gameObject.name);
+    //}
+
+    //private void OnTriggerStay(Collider info)
+    //{
+    //    Debug.Log("OnTriggerStay！！！" + info.gameObject.name);
+    //}
+
+    //private void OnTriggerExit(Collider info)
+    //{
+    //    Debug.Log("OnTriggerExit！！！" + info.gameObject.name);
+    //}
+    #endregion
 }

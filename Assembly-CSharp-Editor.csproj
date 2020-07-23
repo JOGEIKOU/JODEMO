@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{30FA6C79-D6F5-78DD-4F97-5A6C4FE17EA6}</ProjectGuid>
+    <ProjectGuid>{7459FFED-FC46-D686-97A1-2F82010FBBC7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -60,21 +60,106 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\ScriptCreatInit.cs" />
+    <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvDatabaseInspector.cs" />
+    <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Editor\InvFindItem.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\ActiveAnimationEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\BMFontReader.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\ComponentSelector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\EventDelegateDrawer.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\EventDelegateEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\FreeType.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\MinMaxRangeAttributeDrawer.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIContextMenu.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIEditorExtensions.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIEditorTools.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIHandles.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIHelp.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIJson.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUIMenu.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUISelectionTools.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUISettings.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUISnap.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\NGUITransformInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\PropertyBindingEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\PropertyReferenceDrawer.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\SpriteSelector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenAlphaEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenColorEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenFOVEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenHeightEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenOrthoSizeEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenPositionEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenRotationEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenScaleEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenTransformEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenVolumeEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TweenWidthEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\TypewriterEffectEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UI2DSpriteEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIAnchorEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIAtlasInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIAtlasMaker.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIBasicSpriteEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonColorEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonKeysEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIButtonMessageEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UICameraEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UICameraTool.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIColorPickerEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UICreateNewUIWizard.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UICreateWidgetWizard.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIDragObjectEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIDrawCallInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIDrawCallViewer.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIEventTriggerEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIFontInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIFontMaker.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIForwardEventsEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIGridEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIImageButtonInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIInputEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIKeyNavigationEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UILabelInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UILocalizeEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPanelInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPanelTool.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPlayAnimationEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPlayTweenEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPopupListInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIPrefabTool.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIProgressBarEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIRectEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIRootEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIScrollBarEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIScrollViewEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UISliderEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UISnapshotPointEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UISpriteAnimationInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UISpriteInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIStretchEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UITableEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UITextureInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UITexturePacker.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIToggleInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UITweenerEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
+    <Compile Include="Assets\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/UnityProjets/2018.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -323,19 +408,19 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JORPG/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/UnityProjets/2018.4.20f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -699,8 +784,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{4F9BB946-F1AC-49F8-EA4F-E8341854610E}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{211832D4-C6DC-FD40-C0C1-2E4643E5C0B4}</Project>
+      <Project>{AB864DF7-92CE-9E72-865A-D9662D0EE234}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>
