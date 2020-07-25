@@ -2,12 +2,12 @@
 using System.Collections;
 
 /// <summary>
-/// 场景管理器
+/// シーンマネージャー
 /// </summary>
 public class SceneMgr : Singleton<SceneMgr>
 {
     /// <summary>
-    /// 当前场景类型
+    /// シーンのタイプ
     /// </summary>
     public SceneType CurrentSceneType
     {
@@ -23,7 +23,7 @@ public class SceneMgr : Singleton<SceneMgr>
     }
 
     /// <summary>
-    /// 去城镇场景
+    /// 町シーンに行く
     /// </summary>
     public void LoadToCity()
     {

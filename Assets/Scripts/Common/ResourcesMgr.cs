@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System.Collections;
 using System.Text;
@@ -7,35 +6,35 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
 {
     #region ResourceType 资源类型
     /// <summary>
-    /// 资源类型
+    /// リソースタイプ
     /// </summary>
     public enum ResourceType
     {
         /// <summary>
-        /// 场景UI
+        /// シーンUI
         /// </summary>
         UIScene,
         /// <summary>
-        /// 窗口
+        /// ウィンドウズUI
         /// </summary>
         UIWindow,
         /// <summary>
-        /// 角色
+        /// キャラクター
         /// </summary>
         Role,
         /// <summary>
-        /// 特效
+        /// エフェクト
         /// </summary>
         Effect,
         /// <summary>
-        /// 其他
+        ///他
         /// </summary>
         UIOther
     }
     #endregion
 
     /// <summary>
-    /// 预设的列表
+    /// プレハブhashtable
     /// </summary>
     private Hashtable m_PrefabTable;
 
@@ -46,12 +45,12 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
 
     #region Load 加载资源
     /// <summary>
-    /// 加载资源
+    /// リソースロード
     /// </summary>
-    /// <param name="type">资源类型</param>
-    /// <param name="path">短路径</param>
-    /// <param name="cache">是否放入缓存</param>
-    /// <returns>预设克隆体</returns>
+    /// <param name="type">リソースタイプ</param>
+    /// <param name="path">パス</param>
+    /// <param name="cache">キャシューか</param>
+    /// <returns>プレハブのクローン</returns>
     public GameObject Load(ResourceType type, string path, bool cache=false)
     {
         GameObject obj = null;
@@ -65,19 +64,19 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
             switch (type)
             {
                 case ResourceType.UIScene:
-                    sbr.Append("UIPrefab/UIScene/");
+                    sbr.Append("UIPrefabs/UIScene/");
                     break;
                 case ResourceType.UIWindow:
-                    sbr.Append("UIPrefab/UIWindows/");
+                    sbr.Append("UIPrefabs/UIWindows/");
                     break;
                 case ResourceType.Role:
-                    sbr.Append("RolePrefab/");
+                    sbr.Append("RolePrefabs/");
                     break;
                 case ResourceType.Effect:
-                    sbr.Append("EffectPrefab/");
+                    sbr.Append("EffectPrefabs/");
                     break;
                 case ResourceType.UIOther:
-                    sbr.Append("UIPrefab/UIOther/");
+                    sbr.Append("UIPrefabs/UIOther/");
                     break;
             }
 
@@ -94,9 +93,9 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
     }
     #endregion
 
-    #region Dispose 释放资源
+    #region Dispose　リソース開放
     /// <summary>
-    /// 释放资源
+    /// リソース開放
     /// </summary>
     public override void Dispose()
     {
@@ -104,7 +103,6 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
 
         m_PrefabTable.Clear();
 
-        //把未使用的资源进行释放
         Resources.UnloadUnusedAssets();
     }
     #endregion

@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+/// <summary>
+/// シングルトンパターン　ベースクラス
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class Singleton<T> : IDisposable where T :new()
 {
     private static T instance;
@@ -18,6 +22,9 @@ public class Singleton<T> : IDisposable where T :new()
         }
     }
 
+    /// <summary>
+    /// 開放メソッド
+    /// </summary>
     public virtual void Dispose()
     {
         
