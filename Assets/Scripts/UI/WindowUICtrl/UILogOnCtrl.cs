@@ -3,23 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UILogOnCtrl : MonoBehaviour
+public class UILogOnCtrl : UIWindowBase
 {
 
-
-
-    private void Awake()
+    /// <summary>
+    /// BaseUIからオーバーライドBtnClick
+    /// </summary>
+    /// <param name="go"></param>
+    protected override void OnBtnClick(GameObject go)
     {
-        UIButton[] btnArr = GetComponentsInChildren<UIButton>(true);
-        for (int i = 0; i < btnArr.Length; i++)
-        {
-            UIEventListener.Get(btnArr[i].gameObject).onClick = BtnClick;
-        }
-    }
-
-    private void BtnClick(GameObject go)
-    {
-        switch(go.name)
+        switch (go.name)
         {
             case "btnStart":
 
@@ -32,15 +25,11 @@ public class UILogOnCtrl : MonoBehaviour
         }
     }
 
-
     private void BtnToReg()
     {
         Destroy(gameObject);
         GameObject obj = WindowUIMgr.Instance.LoadWindow(WindowUIMgr.WinUIType.Reg);
     }
-
-
-
 
 
 }

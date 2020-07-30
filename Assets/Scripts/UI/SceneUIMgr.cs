@@ -17,6 +17,10 @@ public class SceneUIMgr : Singleton<SceneUIMgr>
         MainCity
     }
 
+    /// <summary>
+    /// 今のシーンUI
+    /// </summary>
+    public UISceneBase CurrentUIScene;
 
     #region LoadSceneUI
     public GameObject LoadSceneUI(SceneUIType type)
@@ -27,6 +31,7 @@ public class SceneUIMgr : Singleton<SceneUIMgr>
         {
             case SceneUIType.LogOn:
                 obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIScene, "UI Root_LogOnScene");
+                CurrentUIScene = obj.GetComponent<UISceneLogonCtrl>();
                 break;
             case SceneUIType.Loading:
                 break;

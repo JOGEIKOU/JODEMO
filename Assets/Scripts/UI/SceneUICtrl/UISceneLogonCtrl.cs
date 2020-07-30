@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISceneLogonCtrl : UISceneBase<UISceneLogonCtrl>
+public class UISceneLogonCtrl : UISceneBase
 {
-    protected override void OnAwake()
+    protected override void Onstart()
     {
-        base.OnAwake();
+        base.Onstart();
 
-        GameObject obj = WindowUIMgr.Instance.LoadWindow(WindowUIMgr.WinUIType.LogOn);
-    }
-
-    void Start()
-    {
-        
+        GameObject obj = WindowUIMgr.Instance.LoadWindow(WindowUIMgr.WinUIType.LogOn,showStyle:WindowUIMgr.WindowShowStyle.CenterToBig);
     }
 }
