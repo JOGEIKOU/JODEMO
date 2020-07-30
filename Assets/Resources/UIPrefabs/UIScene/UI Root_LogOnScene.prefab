@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 8291490327370369929}
   - component: {fileID: 8291490327370369930}
   - component: {fileID: 8291490327370369931}
+  - component: {fileID: 7937654026001754964}
   m_Layer: 5
   m_Name: UI Root_LogOnScene
   m_TagString: Untagged
@@ -403,3 +404,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7937654026001754964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291490327370369932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250b57b7042bad04b8055883743d0ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Container_Center: {fileID: 8291490326362779849}

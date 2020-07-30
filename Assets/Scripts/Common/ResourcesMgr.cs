@@ -103,6 +103,7 @@ public class ResourcesMgr: Singleton<ResourcesMgr>
 
         m_PrefabTable.Clear();
 
+        //使わなかったリソース釈放される
         Resources.UnloadUnusedAssets();
     }
     #endregion

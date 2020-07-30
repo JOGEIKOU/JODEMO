@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 964330991955779682}
   - component: {fileID: 964330991955779683}
   - component: {fileID: 7024727780595531379}
+  - component: {fileID: 2524225761702939091}
   m_Layer: 5
   m_Name: panLogOn
   m_TagString: Untagged
@@ -162,7 +163,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -189,6 +190,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2524225761702939091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964330991955779681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797acb7ed67f9b84590b9631bcd0fb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &964330992178744412
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +505,7 @@ GameObject:
   - component: {fileID: 964330992304273277}
   - component: {fileID: 964330992304273276}
   m_Layer: 5
-  m_Name: btnToLogOn
+  m_Name: btnToReg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

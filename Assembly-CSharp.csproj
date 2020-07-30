@@ -208,6 +208,7 @@
     <Compile Include="Assets\Scripts\Common\ResourcesMgr.cs" />
     <Compile Include="Assets\Scripts\Common\SceneMgr.cs" />
     <Compile Include="Assets\Scripts\Core\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Core\UISceneBase.cs" />
     <Compile Include="Assets\Scripts\Role\PlayerAni.cs" />
     <Compile Include="Assets\Scripts\Role\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Role\RoleCtrl.cs" />
@@ -216,6 +217,11 @@
     <Compile Include="Assets\Scripts\Test\BoxEntity.cs" />
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLogonCtrl.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneUIMgr.cs" />
+    <Compile Include="Assets\Scripts\UI\WindowUICtrl\UILogOnCtrl.cs" />
+    <Compile Include="Assets\Scripts\UI\WindowUICtrl\UIRegCtrl.cs" />
+    <Compile Include="Assets\Scripts\UI\WindowUIMgr.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\ReadMe - 3.12.0.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />
