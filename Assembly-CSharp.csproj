@@ -224,6 +224,8 @@
     <Compile Include="Assets\Scripts\UI\WindowUICtrl\UILogOnCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUICtrl\UIRegCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUIMgr.cs" />
+    <Compile Include="Assets\Scripts\Utils\GameObjectUtil.cs" />
+    <Compile Include="Assets\Scripts\Utils\StringUtil.cs" />
     <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
     <None Include="Assets\NGUI\ReadMe - 3.12.0.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />

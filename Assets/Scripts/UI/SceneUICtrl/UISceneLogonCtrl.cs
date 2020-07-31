@@ -8,6 +8,18 @@ public class UISceneLogonCtrl : UISceneBase
     {
         base.Onstart();
 
-        GameObject obj = WindowUIMgr.Instance.LoadWindow(WindowUIMgr.WinUIType.LogOn,showStyle:WindowUIMgr.WindowShowStyle.CenterToBig);
+        
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.O))
+        {
+            GameObject obj = WindowUIMgr.Instance.OpenWindow(WindowUIType.LogOn);
+        }
+        else if (Input.GetKeyUp(KeyCode.C))
+        {
+            WindowUIMgr.Instance.CloseWindow(WindowUIType.LogOn);
+        }
     }
 }

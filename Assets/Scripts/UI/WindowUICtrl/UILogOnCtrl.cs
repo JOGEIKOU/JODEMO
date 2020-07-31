@@ -28,7 +28,7 @@ public class UILogOnCtrl : UIWindowBase
     private void BtnToReg()
     {
         Destroy(gameObject);
-        GameObject obj = WindowUIMgr.Instance.LoadWindow(WindowUIMgr.WinUIType.Reg);
+        GameObject obj = WindowUIMgr.Instance.OpenWindow(WindowUIType.Reg);
     }
 
 

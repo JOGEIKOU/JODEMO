@@ -7,87 +7,40 @@ using UnityEngine;
 /// </summary>
 public class WindowUIMgr : Singleton<WindowUIMgr>
 {
-    #region ウインドUIのタイプ
+
+    private Dictionary<WindowUIType, UIWindowBase> m_DicWindow = new Dictionary<WindowUIType, UIWindowBase>();
+
+    #region OpenWindowUI
 
     /// <summary>
-    /// シーンUIタイプ
+    /// open window
     /// </summary>
-    public enum WinUIType
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public GameObject OpenWindow(WindowUIType type)
     {
-        LogOn,
-        Reg,
-    }
+        if (m_DicWindow.ContainsKey(type)) return null;
 
-    #endregion
-
-    #region ウインドUIコンテナタイプ
-
-    public enum WindowUIContainerType
-    {
-        /// <summary>
-        /// 左上
-        /// </summary>
-        TL,
-        /// <summary>
-        /// 右上
-        /// </summary>
-        TR,
-        /// <summary>
-        /// 左下
-        /// </summary>
-        BL,
-        /// <summary>
-        /// 右下
-        /// </summary>
-        BR,
-        /// <summary>
-        /// 真ん中
-        /// </summary>
-        Center
-    }
-
-    #endregion
-
-    #region ウィンドウズUIの出るスタイル
-    public enum WindowShowStyle
-    {
-        Normal,
-        CenterToBig,
-        FromTop,
-        FromDown,
-        FromLeft,
-        FromRight
-    }
-    #endregion
-
-    #region LoadWindowUI
-    public GameObject LoadWindow(WinUIType type, WindowUIContainerType containerType = WindowUIContainerType.Center, WindowShowStyle showStyle = WindowShowStyle.Normal)
-    {
         GameObject obj = null;
 
-        switch (type)
-        {
-            case WinUIType.LogOn:
-                obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panLogOn", cache: true);
-                break;
-            case WinUIType.Reg:
-                obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, "panReg", cache: true);
-                break;
-            default:
-                break;
-        }
+        //enumの名前とプレハブの名前必ず同じ
+        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}",type.ToString()), cache: true);
+
+        UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
+        m_DicWindow.Add(type, windowBase);
+        windowBase.CurrentUIType = type;
 
         Transform transParent = null;
 
-        switch (containerType)
+        switch (windowBase.containerType)
         {
-            case WindowUIContainerType.TL:
+            case WindowUIContainerType.TopLeft:
                 break;
-            case WindowUIContainerType.TR:
+            case WindowUIContainerType.TopRight:
                 break;
-            case WindowUIContainerType.BL:
+            case WindowUIContainerType.BottomLeft:
                 break;
-            case WindowUIContainerType.BR:
+            case WindowUIContainerType.BottomRight:
                 break;
             case WindowUIContainerType.Center:
                 transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
@@ -100,20 +53,40 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localScale = Vector3.one;
         NGUITools.SetActive(obj, false);
-        StartShowWindow(obj, showStyle, true);
+        StartShowWindow(windowBase, true);
         return obj;
     }
     #endregion
 
-    private void StartShowWindow(GameObject obj, WindowShowStyle showStyle,bool isOpen)
+
+    #region ウィンドウズUI閉じる
+    /// <summary>
+    /// close window
+    /// </summary>
+    /// <param name="type"></param>
+    public void CloseWindow(WindowUIType type)
     {
-        switch (showStyle)
+        if(m_DicWindow.ContainsKey(type))
+        {
+            StartShowWindow(m_DicWindow[type], false);
+        }
+    }
+    #endregion
+
+    /// <summary>
+    /// start open window
+    /// </summary>
+    /// <param name="windowBase"></param>
+    /// <param name="isOpen"></param>
+    private void StartShowWindow(UIWindowBase windowBase,bool isOpen)
+    {
+        switch (windowBase.showStyle)
         {
             case WindowShowStyle.Normal:
-                ShowNormal(obj,isOpen);
+                ShowNormal(windowBase, isOpen);
                 break;
             case WindowShowStyle.CenterToBig:
-                ShowCenterToBig(obj, isOpen);
+                ShowCenterToBig(windowBase, isOpen);
                 break;
             case WindowShowStyle.FromTop:
                 break;
@@ -128,64 +101,55 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
         }
     }
 
-    /// <summary>
-    /// ウィンドウズUI潰す
-    /// </summary>
-    /// <param name="obj"></param>
-    public void DestroyWindow(GameObject obj)
-    {
-        GameObject.Destroy(obj);
-    }
-
-
     #region UI演出エフェクト
     /// <summary>
     /// 正常的に
     /// </summary>
     /// <param name="obj"></param>
     /// <param name="isOpen"></param>
-    private void ShowNormal(GameObject obj,bool isOpen)
+    private void ShowNormal(UIWindowBase windowBase,bool isOpen)
     {
         if(isOpen)
         {
-            NGUITools.SetActive(obj, true);
+            NGUITools.SetActive(windowBase.gameObject, true);
         }
         else
         {
-            DestroyWindow(obj);
+            DestroyWindow(windowBase);
         }
     }
 
     /// <summary>
     /// 真ん中から拡大に
     /// </summary>
-    /// <param name="obj"></param>
     /// <param name="isOpen"></param>
-    private void ShowCenterToBig(GameObject obj,bool isOpen)
+    private void ShowCenterToBig(UIWindowBase windowBase, bool isOpen)
     {
-        TweenScale ts = obj.GetComponent<TweenScale>();
-        if(ts == null)
-        {
-            ts = obj.AddComponent<TweenScale>();
-        }
+        TweenScale ts = windowBase.gameObject.GetOrCreatComponent<TweenScale>();
+        ts.animationCurve = GlobalInit.Instance.UIAnimationCurve;
         ts.from = Vector3.zero;
         ts.to = Vector3.one;
-        ts.duration = 5f;//経過時間
+        ts.duration = windowBase.duration;//経過時間
         ts.SetOnFinished(() =>
         {
             if (!isOpen)
-                DestroyWindow(obj);
+                DestroyWindow(windowBase);
         }
         );
-        NGUITools.SetActive(obj, true);
+        NGUITools.SetActive(windowBase.gameObject, true);
         if (!isOpen) ts.Play(isOpen);
     }
 
 
-
-
-
-
-
     #endregion
+
+    /// <summary>
+    /// ウィンドウズUI潰す
+    /// </summary>
+    /// <param name="obj"></param>
+    public void DestroyWindow(UIWindowBase windowBase)
+    {
+        Object.Destroy(windowBase.gameObject);
+        m_DicWindow.Remove(windowBase.CurrentUIType);
+    }
 }

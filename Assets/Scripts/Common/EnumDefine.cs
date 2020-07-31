@@ -1,14 +1,9 @@
-//===================================================
-//作    者：边涯  http://www.u3dol.com  QQ群：87481002
-//创建时间：2015-12-01 21:51:56
-//备    注：
-//===================================================
 using UnityEngine;
 using System.Collections;
 
-#region SceneType 场景类型
+#region SceneType 
 /// <summary>
-/// 场景类型
+///シーンタイプ
 /// </summary>
 public enum SceneType
 {
@@ -17,137 +12,104 @@ public enum SceneType
 }
 #endregion
 
-#region WindowUIType 窗口类型
+#region WindowUIType 
 /// <summary>
-/// 窗口类型
+/// ウィンドウズUIタイプ
 /// </summary>
 public enum WindowUIType
 {
-    /// <summary>
-    /// 未设置
-    /// </summary>
+
     None,
-    /// <summary>
-    /// 登录窗口
-    /// </summary>
+
     LogOn,
-    /// <summary>
-    /// 注册窗口
-    /// </summary>
+
     Reg,
-    /// <summary>
-    /// 角色信息窗口
-    /// </summary>
+
     RoleInfo
 }
 #endregion
 
-#region WindowUIContainerType UI容器类型
+#region WindowUIContainerType
 /// <summary>
-/// UI容器类型
+/// UIコンテナタイプ
 /// </summary>
 public enum WindowUIContainerType
 {
-    /// <summary>
-    /// 左上
-    /// </summary>
+
     TopLeft,
-    /// <summary>
-    /// 右上
-    /// </summary>
+
     TopRight,
-    /// <summary>
-    /// 左下
-    /// </summary>
+
     BottomLeft,
-    /// <summary>
-    /// 右下
-    /// </summary>
+
     BottomRight,
-    /// <summary>
-    /// 居中
-    /// </summary>
+
     Center
 }
 #endregion
 
-#region WindowShowStyle 窗口打开方式
+#region WindowShowStyle 
 /// <summary>
-/// 窗口打开方式
+/// ウィンドウズUI演出効果
 /// </summary>
 public enum WindowShowStyle
 {
-    /// <summary>
-    /// 正常打开
-    /// </summary>
+
     Normal,
-    /// <summary>
-    /// 从中间放大
-    /// </summary>
+
     CenterToBig,
-    /// <summary>
-    /// 从上往下
-    /// </summary>
+
     FromTop,
-    /// <summary>
-    /// 从下往上
-    /// </summary>
+
     FromDown,
-    /// <summary>
-    /// 从左向右
-    /// </summary>
+
     FromLeft,
-    /// <summary>
-    /// 从右向左
-    /// </summary>
+
     FromRight
 }
 #endregion
 
-#region RoleType 角色类型
+#region RoleType
 /// <summary>
-/// 角色类型
+/// キャラクタータイプ
 /// </summary>
 public enum RoleType
 {
-    /// <summary>
-    /// 未设置
-    /// </summary>
     None = 0,
     /// <summary>
-    /// 当前玩家
+    /// プレイヤー
     /// </summary>
     MainPlayer = 1,
     /// <summary>
-    /// 怪
+    /// モンスター
     /// </summary>
     Monster = 2
 }
 #endregion
 
 /// <summary>
-/// 角色状态
+/// キャラクター状態
 /// </summary>
 public enum RoleState
 {
     /// <summary>
-    /// 未设置
+    /// 正常
     /// </summary>
     None = 0,
     /// <summary>
-    /// 待机
+    /// 休憩
     /// </summary>
     Idle = 1,
     /// <summary>
-    /// 跑了
+    /// 走る
     /// </summary>
     Run = 2,
     /// <summary>
-    /// 攻击
+    /// 攻撃
     /// </summary>
     Attack = 3,
     /// <summary>
-    /// 受伤
+    /// ダメージ受け
     /// </summary>
     Hurt = 4,
     /// <summary>
@@ -157,7 +119,7 @@ public enum RoleState
 }
 
 /// <summary>
-/// 角色动画状态名称
+/// キャラクターアニメーション状態
 /// </summary>
 public enum RoleAnimatorName
 {
