@@ -25,10 +25,21 @@ public class UILogOnCtrl : UIWindowBase
         }
     }
 
+    /// <summary>
+    /// 登録ボタンメソッド
+    /// </summary>
     private void BtnToReg()
     {
-        Destroy(gameObject);
-        GameObject obj = WindowUIMgr.Instance.OpenWindow(WindowUIType.Reg);
+        WindowUIMgr.Instance.CloseWindow(WindowUIType.LogOn);
+        m_NextOpenWindow = WindowUIType.Reg;
+    }
+
+    protected override void BeforeOnDestroy()
+    {
+        if(m_NextOpenWindow == WindowUIType.Reg)
+        {
+            WindowUIMgr.Instance.OpenWindow(WindowUIType.Reg);
+        }
     }
 
 

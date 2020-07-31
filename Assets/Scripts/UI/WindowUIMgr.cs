@@ -20,16 +20,19 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     public GameObject OpenWindow(WindowUIType type)
     {
         if (m_DicWindow.ContainsKey(type)) return null;
+        if (type == WindowUIType.None) return null;
 
         GameObject obj = null;
 
         //enumの名前とプレハブの名前必ず同じ
         obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}",type.ToString()), cache: true);
+        if (obj == null) return null;
 
         UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
+        if (windowBase == null) return null;
+
         m_DicWindow.Add(type, windowBase);
         windowBase.CurrentUIType = type;
-
         Transform transParent = null;
 
         switch (windowBase.containerType)
@@ -89,12 +92,16 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
                 ShowCenterToBig(windowBase, isOpen);
                 break;
             case WindowShowStyle.FromTop:
+                ShowFromDir(windowBase, 0,isOpen);
                 break;
             case WindowShowStyle.FromDown:
+                ShowFromDir(windowBase, 1, isOpen);
                 break;
             case WindowShowStyle.FromLeft:
+                ShowFromDir(windowBase, 2, isOpen);
                 break;
             case WindowShowStyle.FromRight:
+                ShowFromDir(windowBase, 3, isOpen);
                 break;
             default:
                 break;
@@ -140,6 +147,46 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
         if (!isOpen) ts.Play(isOpen);
     }
 
+    /// <summary>
+    /// 上下左右からロード
+    /// </summary>
+    /// <param name="windowBase"></param>
+    /// <param name="dirType">0 = 上から下へ, 1 = 下から上に, 2 = 左から右に, 3 = 右から左に</param>
+    /// <param name="isOpen"></param>
+    private void ShowFromDir(UIWindowBase windowBase,int dirType,bool isOpen)
+    {
+        TweenPosition tp = windowBase.gameObject.GetOrCreatComponent<TweenPosition>();
+        tp.animationCurve = GlobalInit.Instance.UIAnimationCurve;
+
+        Vector3 from = Vector3.zero;
+        switch(dirType)
+        {
+            case 0:
+                from = new Vector3(0, 1000, 0);
+                break;
+            case 1:
+                from = new Vector3(0, -1000, 0);
+                break;
+            case 2:
+                from = new Vector3(-1400, 0, 0);
+                break;
+            case 3:
+                from = new Vector3(1400, 0, 0);
+                break;
+        }
+        tp.from = from;
+        tp.to = Vector3.one;
+        tp.duration = windowBase.duration;//経過時間
+        tp.SetOnFinished(() =>
+        {
+            if (!isOpen)
+                DestroyWindow(windowBase);
+        }
+        );
+        NGUITools.SetActive(windowBase.gameObject, true);
+        if (!isOpen) tp.Play(isOpen);
+
+    }
 
     #endregion
 

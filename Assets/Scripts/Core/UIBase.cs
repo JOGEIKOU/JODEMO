@@ -22,6 +22,11 @@ public class UIBase : MonoBehaviour
         Onstart();
     }
 
+    private void OnDestroy()
+    {
+        BeforeOnDestroy();
+    }
+
     private void BtnClick(GameObject go)
     {
         OnBtnClick(go);
@@ -36,6 +41,8 @@ public class UIBase : MonoBehaviour
     {
 
     }
+
+    protected virtual void BeforeOnDestroy() { }
 
     protected virtual void OnBtnClick(GameObject go) { }
 }

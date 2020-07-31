@@ -2,17 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIRegCtrl : MonoBehaviour
+public class UIRegCtrl : UIWindowBase
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// BaseUIからオーバーライドBtnClick
+    /// </summary>
+    /// <param name="go"></param>
+    protected override void OnBtnClick(GameObject go)
     {
-        
+        switch (go.name)
+        {
+            case "btnReg":
+
+                break;
+            case "btnToLogOn":
+                BtnToLogOn();
+                break;
+            default:
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BtnToLogOn()
     {
-        
+        WindowUIMgr.Instance.CloseWindow(WindowUIType.Reg);
+        m_NextOpenWindow = WindowUIType.LogOn;
+    }
+
+    protected override void BeforeOnDestroy()
+    {
+        if(m_NextOpenWindow == WindowUIType.LogOn)
+        {
+            WindowUIMgr.Instance.OpenWindow(WindowUIType.LogOn);
+        }
     }
 }

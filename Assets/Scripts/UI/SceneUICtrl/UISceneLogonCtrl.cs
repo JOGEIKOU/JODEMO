@@ -7,19 +7,13 @@ public class UISceneLogonCtrl : UISceneBase
     protected override void Onstart()
     {
         base.Onstart();
-
-        
+        StartCoroutine("OpenLogOnWindow");
     }
 
-    private void Update()
+    private IEnumerator OpenLogOnWindow()
     {
-        if(Input.GetKeyUp(KeyCode.O))
-        {
-            GameObject obj = WindowUIMgr.Instance.OpenWindow(WindowUIType.LogOn);
-        }
-        else if (Input.GetKeyUp(KeyCode.C))
-        {
-            WindowUIMgr.Instance.CloseWindow(WindowUIType.LogOn);
-        }
+        yield return new WaitForSeconds(0.2f);
+        GameObject obj = WindowUIMgr.Instance.OpenWindow(WindowUIType.LogOn);
     }
+
 }

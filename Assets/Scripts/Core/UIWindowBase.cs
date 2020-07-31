@@ -19,4 +19,9 @@ public class UIWindowBase : UIBase
 
     [HideInInspector]
     public WindowUIType CurrentUIType;
+
+    /// <summary>
+    /// next open window
+    /// </summary>
+    protected WindowUIType m_NextOpenWindow = WindowUIType.None;
 }
