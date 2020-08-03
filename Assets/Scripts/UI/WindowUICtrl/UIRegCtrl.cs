@@ -5,6 +5,30 @@ using UnityEngine;
 public class UIRegCtrl : UIWindowBase
 {
     /// <summary>
+    /// nickname
+    /// </summary>
+    [SerializeField]
+    private UIInput m_InputNickName;
+
+    /// <summary>
+    /// password
+    /// </summary>
+    [SerializeField]
+    private UIInput m_InputPwd;
+
+    /// <summary>
+    /// password 確認用
+    /// </summary>
+    [SerializeField]
+    private UIInput m_InputPwd2;
+
+    /// <summary>
+    /// 注意用メッセージ
+    /// </summary>
+    [SerializeField]
+    private UILabel m_LblTip;
+
+    /// <summary>
     /// BaseUIからオーバーライドBtnClick
     /// </summary>
     /// <param name="go"></param>
@@ -13,7 +37,7 @@ public class UIRegCtrl : UIWindowBase
         switch (go.name)
         {
             case "btnReg":
-
+                Reg();
                 break;
             case "btnToLogOn":
                 BtnToLogOn();
@@ -23,17 +47,47 @@ public class UIRegCtrl : UIWindowBase
         }
     }
 
+    /// <summary>
+    /// ログインウィンドウズに行く
+    /// </summary>
     private void BtnToLogOn()
     {
-        WindowUIMgr.Instance.CloseWindow(WindowUIType.Reg);
+        Close();
         m_NextOpenWindow = WindowUIType.LogOn;
     }
 
-    protected override void BeforeOnDestroy()
+    private void Reg()
     {
-        if(m_NextOpenWindow == WindowUIType.LogOn)
+        string nickName = m_InputNickName.value.Trim();
+        string pwd = m_InputPwd.value.Trim();
+        string pwd2 = m_InputPwd2.value.Trim();
+
+        if(string.IsNullOrEmpty(nickName))
         {
-            WindowUIMgr.Instance.OpenWindow(WindowUIType.LogOn);
+            this.m_LblTip.text = "ニックネームを入力してください。";
+            return;
         }
+
+        if (string.IsNullOrEmpty(pwd))
+        {
+            this.m_LblTip.text = "パスワードを入力してください。";
+            return;
+        }
+
+        if (string.IsNullOrEmpty(pwd2))
+        {
+            this.m_LblTip.text = "パスワードを再入力してください。";
+            return;
+        }
+
+        if(pwd != pwd2)
+        {
+            m_LblTip.text = "パスワードを正しく入力してください。";
+        }
+
+        PlayerPrefs.SetString(GlobalInit.MMO_NICKNAME, nickName);
+        PlayerPrefs.SetString(GlobalInit.MMO_PWD, pwd);
+
+        SceneMgr.Instance.LoadToCity();
     }
 }

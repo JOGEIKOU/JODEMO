@@ -219,6 +219,8 @@
     <Compile Include="Assets\Scripts\Test\BoxEntity.cs" />
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
+    <Compile Include="Assets\Scripts\UI\LayerUIMgr.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLoadingCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLogonCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUIMgr.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUICtrl\UILogOnCtrl.cs" />

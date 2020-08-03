@@ -10,6 +10,14 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
 
     private Dictionary<WindowUIType, UIWindowBase> m_DicWindow = new Dictionary<WindowUIType, UIWindowBase>();
 
+    /// <summary>
+    /// 開けているウィンドウズの数
+    /// </summary>
+    public int OpenWindowCount
+    {
+        get => m_DicWindow.Count;
+    }
+
     #region OpenWindowUI
 
     /// <summary>
@@ -19,44 +27,54 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// <returns></returns>
     public GameObject OpenWindow(WindowUIType type)
     {
-        if (m_DicWindow.ContainsKey(type)) return null;
         if (type == WindowUIType.None) return null;
 
         GameObject obj = null;
 
-        //enumの名前とプレハブの名前必ず同じ
-        obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}",type.ToString()), cache: true);
-        if (obj == null) return null;
-
-        UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
-        if (windowBase == null) return null;
-
-        m_DicWindow.Add(type, windowBase);
-        windowBase.CurrentUIType = type;
-        Transform transParent = null;
-
-        switch (windowBase.containerType)
+        //もしウィンドウズ不存在
+        if (!m_DicWindow.ContainsKey(type))
         {
-            case WindowUIContainerType.TopLeft:
-                break;
-            case WindowUIContainerType.TopRight:
-                break;
-            case WindowUIContainerType.BottomLeft:
-                break;
-            case WindowUIContainerType.BottomRight:
-                break;
-            case WindowUIContainerType.Center:
-                transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
-                break;
-            default:
-                break;
-        }
+            //enumの名前とプレハブの名前必ず同じ
+            obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}", type.ToString()), cache: true);
+            if (obj == null) return null;
+            UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
+            if (windowBase == null) return null;
+            m_DicWindow.Add(type, windowBase);
 
-        obj.transform.parent = transParent;
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localScale = Vector3.one;
-        NGUITools.SetActive(obj, false);
-        StartShowWindow(windowBase, true);
+            windowBase.CurrentUIType = type;
+            Transform transParent = null;
+
+            switch (windowBase.containerType)
+            {
+                case WindowUIContainerType.TopLeft:
+                    break;
+                case WindowUIContainerType.TopRight:
+                    break;
+                case WindowUIContainerType.BottomLeft:
+                    break;
+                case WindowUIContainerType.BottomRight:
+                    break;
+                case WindowUIContainerType.Center:
+                    transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
+                    break;
+                default:
+                    break;
+            }
+
+            obj.transform.parent = transParent;
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localScale = Vector3.one;
+            NGUITools.SetActive(obj, false);
+            StartShowWindow(windowBase, true);
+        }
+        else
+        {
+            obj = m_DicWindow[type].gameObject;
+        }
+     
+        //layout 管理
+        LayerUIMgr.Instance.SetLayer(obj);
+
         return obj;
     }
     #endregion
@@ -196,7 +214,8 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// <param name="obj"></param>
     public void DestroyWindow(UIWindowBase windowBase)
     {
-        Object.Destroy(windowBase.gameObject);
+        LayerUIMgr.Instance.CheckOpenWindow();
         m_DicWindow.Remove(windowBase.CurrentUIType);
+        Object.Destroy(windowBase.gameObject);       
     }
 }

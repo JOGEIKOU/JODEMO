@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class UILogOnCtrl : UIWindowBase
 {
+    /// <summary>
+    /// nickname
+    /// </summary>
+    [SerializeField]
+    private UIInput m_InputNickName;
+
+    /// <summary>
+    /// password
+    /// </summary>
+    [SerializeField]
+    private UIInput m_InputPwd;
+
+    /// <summary>
+    /// 注意用メッセージ
+    /// </summary>
+    [SerializeField]
+    private UILabel m_LblTip;
 
     /// <summary>
     /// BaseUIからオーバーライドBtnClick
@@ -15,7 +32,7 @@ public class UILogOnCtrl : UIWindowBase
         switch (go.name)
         {
             case "btnStart":
-
+                Logon();
                 break;
             case "btnToReg":
                 BtnToReg();
@@ -30,17 +47,36 @@ public class UILogOnCtrl : UIWindowBase
     /// </summary>
     private void BtnToReg()
     {
-        WindowUIMgr.Instance.CloseWindow(WindowUIType.LogOn);
+        Close();
         m_NextOpenWindow = WindowUIType.Reg;
     }
 
-    protected override void BeforeOnDestroy()
+    private void Logon()
     {
-        if(m_NextOpenWindow == WindowUIType.Reg)
+        string nickName = m_InputNickName.value.Trim();
+        string pwd = m_InputPwd.value.Trim();
+
+        if (string.IsNullOrEmpty(nickName))
         {
-            WindowUIMgr.Instance.OpenWindow(WindowUIType.Reg);
+            this.m_LblTip.text = "ニックネームを入力してください。";
+            return;
         }
+
+        if (string.IsNullOrEmpty(pwd))
+        {
+            this.m_LblTip.text = "パスワードを入力してください。";
+            return;
+        }
+
+        string oldNickName = PlayerPrefs.GetString(GlobalInit.MMO_NICKNAME);
+        string oldPwd = PlayerPrefs.GetString(GlobalInit.MMO_PWD);
+
+        if(oldNickName != nickName || oldPwd != pwd)
+        {
+            m_LblTip.text = "ニックネームまたはパスワードが間違いました。";
+            return;
+        }
+
+        SceneMgr.Instance.LoadToCity();
     }
-
-
 }

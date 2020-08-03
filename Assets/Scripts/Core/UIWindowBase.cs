@@ -24,4 +24,18 @@ public class UIWindowBase : UIBase
     /// next open window
     /// </summary>
     protected WindowUIType m_NextOpenWindow = WindowUIType.None;
+
+    /// <summary>
+    /// close window
+    /// </summary>
+    protected virtual void Close()
+    {
+        WindowUIMgr.Instance.CloseWindow(CurrentUIType);
+    }
+
+    protected override void BeforeOnDestroy()
+    {
+        if (m_NextOpenWindow == WindowUIType.None) return;
+        WindowUIMgr.Instance.OpenWindow(m_NextOpenWindow);
+    }
 }
