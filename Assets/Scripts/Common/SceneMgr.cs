@@ -19,7 +19,7 @@ public class SceneMgr : Singleton<SceneMgr>
     {
         CurrentSceneType = SceneType.LogOn;
         
-        Application.LoadLevel("TestDemo");
+        Application.LoadLevel("Loading");
     }
 
     /// <summary>
@@ -28,6 +28,6 @@ public class SceneMgr : Singleton<SceneMgr>
     public void LoadToCity()
     {
         CurrentSceneType = SceneType.City;
-        Application.LoadLevel("TestDemo");
+        Application.LoadLevel("Loading");
     }
 }
