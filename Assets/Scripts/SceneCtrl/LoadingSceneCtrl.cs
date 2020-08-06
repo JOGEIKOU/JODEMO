@@ -45,7 +45,7 @@ public class LoadingSceneCtrl : MonoBehaviour
 
         if (m_Async.progress < 0.9f)
         {
-            toProgress = (int)m_Async.progress * 100;
+            toProgress = Mathf.Clamp((int)m_Async.progress * 100,1,100);
         }
         else
         {

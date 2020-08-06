@@ -213,6 +213,7 @@
     <Compile Include="Assets\Scripts\Role\PlayerAni.cs" />
     <Compile Include="Assets\Scripts\Role\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Role\RoleCtrl.cs" />
+    <Compile Include="Assets\Scripts\SceneCtrl\InitSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LoadingSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LogOnSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\Box2Entity.cs" />

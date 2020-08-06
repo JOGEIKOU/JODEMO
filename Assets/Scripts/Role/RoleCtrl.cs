@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,8 +31,6 @@ public class RoleCtrl : MonoBehaviour
     /// </summary>
     private Quaternion m_TargetQuaternion;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +40,71 @@ public class RoleCtrl : MonoBehaviour
         if(CameraCtrl.Instance != null)
         {
             CameraCtrl.Instance.Init();
+        }
+
+        FingerEvent.Instance.OnFingerDrag += OnFingerDrag;
+        FingerEvent.Instance.OnZoom += OnZoom;
+        FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
+    }
+
+    private void OnFingerDrag(FingerEvent.FingerDir obj)
+    {
+        switch (obj)
+        {
+            case FingerEvent.FingerDir.Left:
+                CameraCtrl.Instance.SetCameraRotate(0);
+                break;
+            case FingerEvent.FingerDir.Right:
+                CameraCtrl.Instance.SetCameraRotate(1);
+                break;
+            case FingerEvent.FingerDir.Up:
+                CameraCtrl.Instance.SetCameraRotate(2);
+                break;
+            case FingerEvent.FingerDir.Down:
+                CameraCtrl.Instance.SetCameraRotate(3);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnPlayerClickGround()
+    {
+        //もし2Dカメラが存在
+        if(UICamera.currentCamera != null)
+        {
+            Ray rayUI = UICamera.currentCamera.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(rayUI,Mathf.Infinity,1<<LayerMask.NameToLayer("UI")))
+            {
+                Debug.Log("Layer of UI");
+                return;
+            }
+        }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if(Physics.Raycast(ray,out hitInfo))
+        {
+            if(hitInfo.collider.gameObject.name.Equals("Ground",System.StringComparison.CurrentCultureIgnoreCase))
+            {
+                m_TargetPos = hitInfo.point;
+                m_RotationSpeed = 0;
+            }
+        }
+
+    }
+
+    private void OnZoom(FingerEvent.ZoomType obj)
+    {
+        switch (obj)
+        {
+            case FingerEvent.ZoomType.In:
+                CameraCtrl.Instance.SetCameraZoom(0);
+                break;
+            case FingerEvent.ZoomType.Out:
+                CameraCtrl.Instance.SetCameraZoom(1);
+                break;
         }
     }
 
@@ -145,10 +209,7 @@ public class RoleCtrl : MonoBehaviour
             }
         }
 
-
         CameraAutoFollow();
-
-
     }
 
     //private void OnDrawGizmos()
