@@ -70,17 +70,6 @@ public class RoleCtrl : MonoBehaviour
 
     private void OnPlayerClickGround()
     {
-        //もし2Dカメラが存在
-        if(UICamera.currentCamera != null)
-        {
-            Ray rayUI = UICamera.currentCamera.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(rayUI,Mathf.Infinity,1<<LayerMask.NameToLayer("UI")))
-            {
-                Debug.Log("Layer of UI");
-                return;
-            }
-        }
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 

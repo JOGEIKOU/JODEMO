@@ -80,8 +80,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3931369125801238115}
   - component: {fileID: 3931369125801238112}
+  - component: {fileID: 5216609901434439217}
+  - component: {fileID: 8885985952276857146}
   m_Layer: 5
-  m_Name: sprSkillImg
+  m_Name: btnSkill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +158,45 @@ MonoBehaviour:
   mAtlas: {fileID: 11457612, guid: b6319dfb306346b4d919fa075b35079c, type: 3}
   mSpriteName: Skill3
   mFillCenter: 1
+--- !u!114 &5216609901434439217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369125801238114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 3931369125801238114}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!65 &8885985952276857146
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369125801238114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 84, y: 84, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3931369125839161134
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +280,7 @@ GameObject:
   - component: {fileID: 3931369125883369484}
   - component: {fileID: 3931369125883369487}
   - component: {fileID: 3931369125883369486}
+  - component: {fileID: 5739080833375350059}
   m_Layer: 5
   m_Name: UI Root_City
   m_TagString: Untagged
@@ -353,6 +395,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5739080833375350059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369125883369481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a7cb5ea8e16fd40828fce43cfd9ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Container_Center: {fileID: 8160400557387394933}
 --- !u!1 &3931369125976147748
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,8 +576,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3931369126157309430}
   - component: {fileID: 3931369126157309431}
+  - component: {fileID: 7111918553847590610}
+  - component: {fileID: 4879170808091522971}
   m_Layer: 5
-  m_Name: sprSkillImg
+  m_Name: btnSkill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,6 +654,45 @@ MonoBehaviour:
   mAtlas: {fileID: 11457612, guid: b6319dfb306346b4d919fa075b35079c, type: 3}
   mSpriteName: Skill2
   mFillCenter: 1
+--- !u!114 &7111918553847590610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369126157309425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 3931369126157309425}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!65 &4879170808091522971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369126157309425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 84, y: 84, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3931369126159430140
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,8 +860,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3931369126210752825}
   - component: {fileID: 3931369126210752830}
+  - component: {fileID: 4910961704044637222}
+  - component: {fileID: 2010319598144790431}
   m_Layer: 5
-  m_Name: sprHeadImg
+  m_Name: btnHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +918,7 @@ MonoBehaviour:
   mHeight: 76
   mDepth: 1
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -840,6 +938,45 @@ MonoBehaviour:
   mAtlas: {fileID: 11403898, guid: 3ea958d2e21fed441906741bb4d662aa, type: 3}
   mSpriteName: HeadImg1
   mFillCenter: 1
+--- !u!114 &4910961704044637222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369126210752824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 3931369126210752824}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!65 &2010319598144790431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369126210752824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 76, y: 76, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3931369126250732368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,8 +2530,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3931369127405226529}
   - component: {fileID: 3931369127405226534}
+  - component: {fileID: 1005109175551090573}
+  - component: {fileID: 8171325535661623165}
   m_Layer: 5
-  m_Name: sprSkillImg
+  m_Name: btnSkill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2469,6 +2608,45 @@ MonoBehaviour:
   mAtlas: {fileID: 11457612, guid: b6319dfb306346b4d919fa075b35079c, type: 3}
   mSpriteName: Skill1
   mFillCenter: 1
+--- !u!114 &1005109175551090573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369127405226528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 3931369127405226528}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!65 &8171325535661623165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369127405226528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 84, y: 84, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3931369127502007036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,8 +2657,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3931369127502007037}
   - component: {fileID: 3931369127502007026}
+  - component: {fileID: 5226036909104519243}
+  - component: {fileID: 5660704434174244384}
   m_Layer: 5
-  m_Name: Sprite
+  m_Name: btnBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2555,6 +2735,45 @@ MonoBehaviour:
   mAtlas: {fileID: 11431144, guid: 0d2bdae7bc3f3f742826a114e7663135, type: 3}
   mSpriteName: Ico_Blood
   mFillCenter: 1
+--- !u!114 &5226036909104519243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369127502007036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 3931369127502007036}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!65 &5660704434174244384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931369127502007036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 49, y: 68, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3931369127629689976
 GameObject:
   m_ObjectHideFlags: 0

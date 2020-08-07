@@ -213,6 +213,7 @@
     <Compile Include="Assets\Scripts\Role\PlayerAni.cs" />
     <Compile Include="Assets\Scripts\Role\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Role\RoleCtrl.cs" />
+    <Compile Include="Assets\Scripts\SceneCtrl\CitySceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\InitSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LoadingSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LogOnSceneCtrl.cs" />
@@ -222,11 +223,13 @@
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
     <Compile Include="Assets\Scripts\UI\LayerUIMgr.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneCityCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLoadingCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLogonCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUIMgr.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUICtrl\UILogOnCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUICtrl\UIRegCtrl.cs" />
+    <Compile Include="Assets\Scripts\UI\WindowUICtrl\UIRoleInfoCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\WindowUIMgr.cs" />
     <Compile Include="Assets\Scripts\Utils\GameObjectUtil.cs" />
     <Compile Include="Assets\Scripts\Utils\StringUtil.cs" />
