@@ -42,9 +42,12 @@ public class RoleCtrl : MonoBehaviour
             CameraCtrl.Instance.Init();
         }
 
-        FingerEvent.Instance.OnFingerDrag += OnFingerDrag;
-        FingerEvent.Instance.OnZoom += OnZoom;
-        FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
+        if(FingerEvent.Instance != null)
+        {
+            FingerEvent.Instance.OnFingerDrag += OnFingerDrag;
+            FingerEvent.Instance.OnZoom += OnZoom;
+            FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
+        }
     }
 
     private void OnFingerDrag(FingerEvent.FingerDir obj)
@@ -58,10 +61,10 @@ public class RoleCtrl : MonoBehaviour
                 CameraCtrl.Instance.SetCameraRotate(1);
                 break;
             case FingerEvent.FingerDir.Up:
-                CameraCtrl.Instance.SetCameraRotate(2);
+                CameraCtrl.Instance.SetCameraUpAndDown(1);
                 break;
             case FingerEvent.FingerDir.Down:
-                CameraCtrl.Instance.SetCameraRotate(3);
+                CameraCtrl.Instance.SetCameraUpAndDown(0);
                 break;
             default:
                 break;
@@ -242,6 +245,14 @@ public class RoleCtrl : MonoBehaviour
         }
     }
 
-
+    private void OnDestroy()
+    {
+        if(FingerEvent.Instance != null)
+        {
+            FingerEvent.Instance.OnFingerDrag -= OnFingerDrag;
+            FingerEvent.Instance.OnZoom -= OnZoom;
+            FingerEvent.Instance.OnPlayerClick -= OnPlayerClickGround;
+        }
+    }
 
 }
