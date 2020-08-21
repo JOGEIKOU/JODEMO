@@ -31,6 +31,13 @@ public class RoleCtrl : MonoBehaviour
     /// </summary>
     private Quaternion m_TargetQuaternion;
 
+    /// <summary>
+    /// プレイヤのアニメション
+    /// </summary>
+    [SerializeField]
+    private Animator m_Animator;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +55,8 @@ public class RoleCtrl : MonoBehaviour
             FingerEvent.Instance.OnZoom += OnZoom;
             FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
         }
+
+        m_Animator.SetBool("ToIdelNormal", true);
     }
 
     private void OnFingerDrag(FingerEvent.FingerDir obj)
@@ -98,6 +107,16 @@ public class RoleCtrl : MonoBehaviour
                 CameraCtrl.Instance.SetCameraZoom(1);
                 break;
         }
+    }
+
+    private void Reset()
+    {
+        m_Animator.SetBool("ToIdelNormal", false);
+        m_Animator.SetBool("ToIdelFighting", false);
+        m_Animator.SetBool("ToRun", false);
+        m_Animator.SetBool("Tohurt", false);
+        m_Animator.SetBool("ToDie", false);
+        m_Animator.SetInteger("ToPyhAttack", 0);
     }
 
     // Update is called once per frame
@@ -201,14 +220,61 @@ public class RoleCtrl : MonoBehaviour
             }
         }
 
+
+        AnimatorStateInfo info = m_Animator.GetCurrentAnimatorStateInfo(0);
+
+        if (info.IsName("_Idel_Normal"))
+        {
+            m_Animator.SetInteger("CurrState", 1);
+        }
+        else if(info.IsName("_Idel_Fight"))
+        {
+            m_Animator.SetInteger("CurrState", 2);
+        }
+        else if (info.IsName("_Run"))
+        {
+            m_Animator.SetInteger("CurrState", 3);
+        }
+        else if (info.IsName("_Hurt"))
+        {
+            m_Animator.SetInteger("CurrState", 4);
+        }
+        else if (info.IsName("_Die"))
+        {
+            m_Animator.SetInteger("CurrState", 5);
+        }
+        else if (info.IsName("_PhyATK1"))
+        {
+            m_Animator.SetInteger("CurrState", 6);
+
+            if(info.normalizedTime>1.0f)
+            {
+                Reset();
+                m_Animator.SetBool("ToIdelNormal", true);
+            }
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            Reset();
+            m_Animator.SetBool("ToRun", true);
+        }
+        else if(Input.GetKeyUp(KeyCode.N))
+        {
+            Reset();
+            m_Animator.SetBool("ToIdelNormal", true);
+        }
+        else if(Input.GetKeyUp(KeyCode.A))
+        {
+            Reset();
+            m_Animator.SetInteger("ToPyhAttack", 1);
+        }
+
+
+
         CameraAutoFollow();
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, 1);
-    //}
 
     private void CameraAutoFollow()
     {
