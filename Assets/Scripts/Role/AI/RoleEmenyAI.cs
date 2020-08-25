@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoleEmenyAI : MonoBehaviour
+/// <summary>
+/// 敵のAI
+/// </summary>
+public class RoleEmenyAI : IRoleAI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    public void DoAI()
     {
         
     }

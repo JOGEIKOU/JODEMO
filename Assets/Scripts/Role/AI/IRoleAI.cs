@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IRoleAI : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+/// <summary>
+/// キャラクターAIインタフェース
+/// </summary>
+public interface IRoleAI 
+{
+    /// <summary>
+    /// AI実行
+    /// </summary>
+    void DoAI();
 }

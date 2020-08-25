@@ -1033,12 +1033,6 @@ Transform:
   m_Father: {fileID: 333508936}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1450865978 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 0f433c1cdb997b74d8e92801fec5f7a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1060076782}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1450865979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400072, guid: 0f433c1cdb997b74d8e92801fec5f7a9,
@@ -1093,7 +1087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1692970748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 10
-  m_Animator: {fileID: 1450865978}
+  Animator: {fileID: 0}
+  CurrRoleType: 1
 --- !u!143 &1692970749
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1172,7 +1167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 10
-  m_Animator: {fileID: 798768766}
+  Animator: {fileID: 798768766}
+  CurrRoleType: 1
 --- !u!143 &1708151487
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1199,7 +1195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708151485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.22, y: 3.276, z: -10.04}
+  m_LocalPosition: {x: -1.8, y: 3.276, z: -9.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 769694950}
@@ -1386,6 +1382,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2492218801338380244, guid: a382a0ca00e1d0b4386fa9930c3d1e1c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 9804967a233b9aa499619c52f146ec01,
+        type: 2}
     - target: {fileID: 2492218801345764372, guid: a382a0ca00e1d0b4386fa9930c3d1e1c,
         type: 3}
       propertyPath: m_Layer
@@ -1651,11 +1653,5 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2492218801338380244, guid: a382a0ca00e1d0b4386fa9930c3d1e1c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 9804967a233b9aa499619c52f146ec01,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a382a0ca00e1d0b4386fa9930c3d1e1c, type: 3}

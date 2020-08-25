@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// キャラクターコントローラー
+/// </summary>
 public class RoleCtrl : MonoBehaviour
 {
     /// <summary>
@@ -35,7 +38,41 @@ public class RoleCtrl : MonoBehaviour
     /// プレイヤのアニメション
     /// </summary>
     [SerializeField]
-    private Animator m_Animator;
+    public Animator Animator;
+
+    /// <summary>
+    /// 今のキャラクタータイプ
+    /// </summary>
+    public RoleType CurrRoleType = RoleType.MainPlayer;
+
+    /// <summary>
+    /// 今のキャラクター情報
+    /// </summary>
+    public RoleInfoBase CurrRoleInfo = null;
+
+    /// <summary>
+    /// 今のキャラクターのAI
+    /// </summary>
+    public IRoleAI CurrRoleAI = null;
+
+    /// <summary>
+    /// 有限状態
+    /// </summary>
+    public RoleFSMMgr CurrRoleFSMMgr = null;
+
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    /// <param name="roleType"></param>
+    /// <param name="roleInfo"></param>
+    /// <param name="ai"></param>
+    public void Init(RoleType roleType,RoleInfoBase roleInfo,IRoleAI ai)
+    {
+        CurrRoleType = roleType;
+        CurrRoleInfo = roleInfo;
+        CurrRoleAI = ai;
+    }
+
 
 
     // Start is called before the first frame update
@@ -56,7 +93,7 @@ public class RoleCtrl : MonoBehaviour
             FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
         }
 
-        m_Animator.SetBool("ToIdelNormal", true);
+        CurrRoleFSMMgr = new RoleFSMMgr(this);
     }
 
     private void OnFingerDrag(FingerEvent.FingerDir obj)
@@ -109,32 +146,16 @@ public class RoleCtrl : MonoBehaviour
         }
     }
 
-    private void Reset()
-    {
-        m_Animator.SetBool("ToIdelNormal", false);
-        m_Animator.SetBool("ToIdelFighting", false);
-        m_Animator.SetBool("ToRun", false);
-        m_Animator.SetBool("Tohurt", false);
-        m_Animator.SetBool("ToDie", false);
-        m_Animator.SetInteger("ToPyhAttack", 0);
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        //キャラクターのAIチェック
+        //if (CurrRoleAI == null) return;
+        //CurrRoleAI.DoAI();
 
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    GameObject[] boxobjs = GameObject.FindGameObjectsWithTag("Box");
-        //    if (boxobjs != null && boxobjs.Length>0)
-        //    {
-        //        for (int i = 0; i < boxobjs.Length; i++)
-        //        {
-        //            boxobjs[i].transform.localPosition = boxobjs[i].transform.localPosition + new Vector3(0, 0, 1);
-        //        }             
-        //    }
-        //}
-        //return;
+        if(CurrRoleFSMMgr != null)
+        {
+            CurrRoleFSMMgr.OnUpdate();
+        }
 
         if (m_CharacterController == null) return;
 
@@ -220,58 +241,18 @@ public class RoleCtrl : MonoBehaviour
             }
         }
 
-
-        AnimatorStateInfo info = m_Animator.GetCurrentAnimatorStateInfo(0);
-
-        if (info.IsName("_Idel_Normal"))
-        {
-            m_Animator.SetInteger("CurrState", 1);
-        }
-        else if(info.IsName("_Idel_Fight"))
-        {
-            m_Animator.SetInteger("CurrState", 2);
-        }
-        else if (info.IsName("_Run"))
-        {
-            m_Animator.SetInteger("CurrState", 3);
-        }
-        else if (info.IsName("_Hurt"))
-        {
-            m_Animator.SetInteger("CurrState", 4);
-        }
-        else if (info.IsName("_Die"))
-        {
-            m_Animator.SetInteger("CurrState", 5);
-        }
-        else if (info.IsName("_PhyATK1"))
-        {
-            m_Animator.SetInteger("CurrState", 6);
-
-            if(info.normalizedTime>1.0f)
-            {
-                Reset();
-                m_Animator.SetBool("ToIdelNormal", true);
-            }
-        }
-
-
         if (Input.GetKeyUp(KeyCode.R))
         {
-            Reset();
-            m_Animator.SetBool("ToRun", true);
+            ToRun();
         }
         else if(Input.GetKeyUp(KeyCode.N))
         {
-            Reset();
-            m_Animator.SetBool("ToIdelNormal", true);
+            ToIdel();
         }
-        else if(Input.GetKeyUp(KeyCode.A))
+        else if (Input.GetKeyUp(KeyCode.T))
         {
-            Reset();
-            m_Animator.SetInteger("ToPyhAttack", 1);
+            ToAttack();
         }
-
-
 
         CameraAutoFollow();
     }
@@ -320,5 +301,36 @@ public class RoleCtrl : MonoBehaviour
             FingerEvent.Instance.OnPlayerClick -= OnPlayerClickGround;
         }
     }
+
+
+    #region キャラクター操作
+
+    public void ToIdel()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+    }
+
+    public void ToHurt()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Hurt);
+    }
+
+    public void ToAttack()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Attack);
+    }
+
+    public void ToDie()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Die);
+    }
+
+    public void ToRun()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Run);
+    }
+
+    #endregion
+
 
 }

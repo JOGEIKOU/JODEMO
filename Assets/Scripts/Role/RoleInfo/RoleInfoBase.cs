@@ -2,17 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoleInfoBase : MonoBehaviour
+/// <summary>
+/// キャラクター　ベースクラス
+/// </summary>
+public class RoleInfoBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// キャラクター　サーバーID
+    /// </summary>
+    public int RoleServerID;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// キャラクターID（ロケーションID）
+    /// </summary>
+    public int RoleID;
+
+    /// <summary>
+    /// ニックネーム
+    /// </summary>
+    public string NickName;
+
+    /// <summary>
+    /// HP上限
+    /// </summary>
+    public int MaxHP;
+
+    /// <summary>
+    /// 今のHP
+    /// </summary>
+    public int CurrHP;
 }

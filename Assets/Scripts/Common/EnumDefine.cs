@@ -83,7 +83,7 @@ public enum RoleType
     /// <summary>
     /// モンスター
     /// </summary>
-    Monster = 2
+    Emeny = 2
 }
 #endregion
 
@@ -109,7 +109,7 @@ public enum RoleState
     /// </summary>
     Attack = 3,
     /// <summary>
-    /// ダメージ受け
+    /// 傷つけ
     /// </summary>
     Hurt = 4,
     /// <summary>
@@ -119,24 +119,24 @@ public enum RoleState
 }
 
 /// <summary>
-/// キャラクターアニメーション状態
+/// キャラクターアニメーション状態名前
 /// </summary>
 public enum RoleAnimatorName
 {
-    Idle_Normal,
-    Idle_Fight,
-    Run,
-    Hurt,
-    Die,
-    PhyAttack1,
-    PhyAttack2,
-    PhyAttack3
+    _Idel_Normal,
+    _Idle_Fight,
+    _Run,
+    _Hurt,
+    _Die,
+    _PhyATK1,
+    _PhyATK2,
+    _PhyATK3
 }
 
 public enum ToAnimatorCondition
 {
     ToIdleNormal,
-    ToIdleFight,
+    ToIdelFighting,
     ToRun,
     ToHurt,
     ToDie,

@@ -2,17 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoleStateAbs : MonoBehaviour
+
+/// <summary>
+/// キャラクター状態の抽象baseclass
+/// </summary>
+public abstract class RoleStateAbs
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 今の有限状態マネージャー
+    /// </summary>
+    public RoleFSMMgr CurrRoleFSMMgr { get; private set; }
+
+    /// <summary>
+    /// 今のアニメーション状態状態
+    /// </summary>
+    public AnimatorStateInfo CurrRoleAnimatorStateInfo { get; set; }
+
+    public RoleStateAbs(RoleFSMMgr roleFSMMgr)
     {
-        
+        CurrRoleFSMMgr = roleFSMMgr;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 状態に入る
+    /// </summary>
+    public virtual void OnEnter()
     {
-        
+
+    }
+
+    /// <summary>
+    /// 状態を実行
+    /// </summary>
+    public virtual void OnUpdate()
+    {
+
+    }
+
+    /// <summary>
+    /// 状態に離れる
+    /// </summary>
+    public virtual void OnLeave()
+    {
+
     }
 }

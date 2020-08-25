@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoleMainPlayerCityAI : MonoBehaviour
+/// <summary>
+/// role main city scene AI
+/// </summary>
+public class RoleMainPlayerCityAI : IRoleAI
 {
-    // Start is called before the first frame update
-    void Start()
+    public void DoAI()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

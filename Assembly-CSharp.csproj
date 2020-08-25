@@ -215,6 +215,7 @@
     <Compile Include="Assets\Scripts\Role\AI\RoleMainPlayerCityAI.cs" />
     <Compile Include="Assets\Scripts\Role\FSM\RoleFSMMgr.cs" />
     <Compile Include="Assets\Scripts\Role\FSM\State\RoleStateAbs.cs" />
+    <Compile Include="Assets\Scripts\Role\FSM\State\RoleStateAttack.cs" />
     <Compile Include="Assets\Scripts\Role\FSM\State\RoleStateDie.cs" />
     <Compile Include="Assets\Scripts\Role\FSM\State\RoleStateHurt.cs" />
     <Compile Include="Assets\Scripts\Role\FSM\State\RoleStateIdle.cs" />
