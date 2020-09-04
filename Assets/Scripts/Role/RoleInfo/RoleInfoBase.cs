@@ -10,7 +10,7 @@ public class RoleInfoBase
     /// <summary>
     /// キャラクター　サーバーID
     /// </summary>
-    public int RoleServerID;
+    public long RoleServerID;
 
     /// <summary>
     /// キャラクターID（ロケーションID）

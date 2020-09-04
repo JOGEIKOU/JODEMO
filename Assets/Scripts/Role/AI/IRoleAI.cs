@@ -9,6 +9,16 @@ using UnityEngine;
 public interface IRoleAI 
 {
     /// <summary>
+    /// 現在コントローラーしているキャラクター
+    /// </summary>
+    RoleCtrl CurrRole
+    {
+        get;
+        set;
+    }
+
+
+    /// <summary>
     /// AI実行
     /// </summary>
     void DoAI();

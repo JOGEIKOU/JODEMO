@@ -88,6 +88,8 @@ public class UIRegCtrl : UIWindowBase
         PlayerPrefs.SetString(GlobalInit.MMO_NICKNAME, nickName);
         PlayerPrefs.SetString(GlobalInit.MMO_PWD, pwd);
 
+        GlobalInit.Instance.CurrRoleNickName = nickName;
+
         SceneMgr.Instance.LoadToCity();
     }
 }

@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HUD Text\Scripts\HUDText.cs" />
+    <Compile Include="Assets\HUD Text\Scripts\UIFollowTarget.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
     <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -223,10 +225,13 @@
     <Compile Include="Assets\Scripts\Role\PlayerAni.cs" />
     <Compile Include="Assets\Scripts\Role\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Role\RoleCtrl.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleHeadBarCtrl.cs" />
     <Compile Include="Assets\Scripts\Role\RoleInfo\RoleInfoBase.cs" />
     <Compile Include="Assets\Scripts\Role\RoleInfo\RoleInfoEmeny.cs" />
     <Compile Include="Assets\Scripts\Role\RoleInfo\RoleInfoMainPlayer.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleMgr.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\CitySceneCtrl.cs" />
+    <Compile Include="Assets\Scripts\SceneCtrl\EmenyAbout\EmenyCreatePoint.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\InitSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LoadingSceneCtrl.cs" />
     <Compile Include="Assets\Scripts\SceneCtrl\LogOnSceneCtrl.cs" />
@@ -236,6 +241,7 @@
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
     <Compile Include="Assets\Scripts\UI\LayerUIMgr.cs" />
+    <Compile Include="Assets\Scripts\UI\Other\RoleHeadBarRoot.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneCityCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLoadingCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLogonCtrl.cs" />

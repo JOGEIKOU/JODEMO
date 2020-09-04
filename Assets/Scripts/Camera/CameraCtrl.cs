@@ -40,7 +40,7 @@ public class CameraCtrl : MonoBehaviour
     /// </summary>
     public void Init()
     {
-        m_CameraUpAndDown.transform.localEulerAngles = new Vector3(Mathf.Clamp(m_CameraUpAndDown.transform.localEulerAngles.x, 35f, 50f), 0, 0);
+        m_CameraUpAndDown.transform.localEulerAngles = new Vector3(0,0,Mathf.Clamp(m_CameraUpAndDown.transform.localEulerAngles.z, 35f, 80f));
     }
 
     /// <summary>

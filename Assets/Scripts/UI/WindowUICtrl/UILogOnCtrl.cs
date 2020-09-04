@@ -77,6 +77,8 @@ public class UILogOnCtrl : UIWindowBase
             return;
         }
 
+        GlobalInit.Instance.CurrRoleNickName = nickName;
+
         SceneMgr.Instance.LoadToCity();
     }
 }
