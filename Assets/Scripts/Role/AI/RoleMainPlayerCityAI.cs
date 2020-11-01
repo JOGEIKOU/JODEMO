@@ -16,6 +16,19 @@ public class RoleMainPlayerCityAI : IRoleAI
 
     public void DoAI()
     {
+        //1もし敵にロックしたら、攻撃
+        if(CurrRole.LockEmeny != null)
+        {
+            if(CurrRole.LockEmeny.CurrRoleInfo.CurrHP <= 0)
+            {
+                CurrRole.LockEmeny = null;
+                return;
+            }
 
+            if (CurrRole.CurrRoleFSMMgr.CurrRoleStateEnum != RoleState.Attack)
+            {
+                CurrRole.ToAttack();
+            }
+        }
     }
 }

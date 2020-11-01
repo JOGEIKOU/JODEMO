@@ -81,6 +81,16 @@ public class RoleCtrl : MonoBehaviour
     public RoleCtrl LockEmeny;
 
     /// <summary>
+    /// Hurt delegate
+    /// </summary>
+    public System.Action OnRoleHurt;
+
+    /// <summary>
+    /// キャラクター回収
+    /// </summary>
+    public System.Action<RoleCtrl> OnRoleDie;
+
+    /// <summary>
     /// 有限状態
     /// </summary>
     public RoleFSMMgr CurrRoleFSMMgr = null;
@@ -208,10 +218,15 @@ public class RoleCtrl : MonoBehaviour
         //計算
         int hurt = (int)(attackValue * UnityEngine.Random.Range(0.5f, 1f));
 
-        roleHeadBarCtrl.SetHUDText(hurt);
+        if(OnRoleHurt != null)
+        {
+            OnRoleHurt();
+        }
+        
         CurrRoleInfo.CurrHP -= hurt;
+        roleHeadBarCtrl.SetHUDText(hurt, (float)CurrRoleInfo.CurrHP / CurrRoleInfo.MaxHP);
 
-        if(CurrRoleInfo.CurrHP <=0)
+        if (CurrRoleInfo.CurrHP <=0)
         {
             CurrRoleFSMMgr.ChangeState(RoleState.Die);
         }
@@ -255,6 +270,9 @@ public class RoleCtrl : MonoBehaviour
 
     private void OnDestroy()
     {
-
+        if(m_HeadBar != null)
+        {
+            Destroy(m_HeadBar);
+        }
     }
 }

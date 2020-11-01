@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EmenyCreatePoint : MonoBehaviour
 {
@@ -35,7 +37,7 @@ public class EmenyCreatePoint : MonoBehaviour
                 GameObject objClone = RoleMgr.Instance.LoadRole(emenyName, RoleType.Emeny);
 
                 objClone.transform.parent = this.transform;
-                objClone.transform.position = this.transform.TransformPoint(new Vector3(Random.Range(-1f,1f),0,Random.Range(-1f,1f)));
+                objClone.transform.position = transform.TransformPoint(new Vector3(Random.Range(-1f,1f),0,Random.Range(-1f,1f)));
                 RoleCtrl roleCtrl = objClone.GetComponent<RoleCtrl>();
                 roleCtrl.BornPoint = objClone.transform.position;
 
@@ -43,11 +45,20 @@ public class EmenyCreatePoint : MonoBehaviour
                 RoleInfoEmeny roleInfo = new RoleInfoEmeny();
                 roleInfo.RoleServerID = System.DateTime.Now.Ticks;
                 roleInfo.RoleID = 1;
-                roleInfo.CurrHP = roleInfo.MaxHP = 100;
+                roleInfo.CurrHP = roleInfo.MaxHP = 1000;
                 roleInfo.NickName = "大魔王徐";
                 roleCtrl.Init(RoleType.Emeny, roleInfo, new RoleEmenyAI(roleCtrl));
+
+                roleCtrl.OnRoleDie = RoleDie;
+
                 m_CurrCount++;
             }
         }
+    }
+
+    private void RoleDie(RoleCtrl obj)
+    {
+        m_CurrCount--;
+        Destroy(obj.gameObject);
     }
 }

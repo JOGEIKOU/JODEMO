@@ -502,3 +502,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lblNickName: {fileID: 8414304420181589664}
   hudText: {fileID: 8067608790052025312}
+  pbHP: {fileID: 7242397853175371446}

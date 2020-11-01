@@ -33,7 +33,7 @@ public class RoleHeadBarCtrl : MonoBehaviour
 
     private void Update()
     {
-        if (Camera.main == null || UICamera.mainCamera) return;
+        if (Camera.main == null || UICamera.mainCamera || m_Target == null) return;
 
         //ワールド座標ー＞ビュー座標
         Vector3 pos = Camera.main.WorldToViewportPoint(m_Target.position);
@@ -47,9 +47,10 @@ public class RoleHeadBarCtrl : MonoBehaviour
     /// ダメージ数字エフェクト
     /// </summary>
     /// <param name="hurtValue"></param>
-    public void SetHUDText(int hurtValue)
+    public void SetHUDText(int hurtValue,float pbHPValue = 0)
     {
         hudText.Add(string.Format("-{0}",hurtValue) , Color.red, 0.1f);
+        pbHP.value = pbHPValue;
     }
 
 }

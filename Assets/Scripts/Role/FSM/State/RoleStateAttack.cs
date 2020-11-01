@@ -24,6 +24,15 @@ public class RoleStateAttack : RoleStateAbs
     {
         base.OnEnter();
         CurrRoleFSMMgr.CurrRoleCtrl.Animator.SetInteger(ToAnimatorCondition.ToPhyAttack.ToString(), 1);
+
+        if (CurrRoleFSMMgr.CurrRoleCtrl.LockEmeny != null)
+        {
+            CurrRoleFSMMgr.CurrRoleCtrl.transform.LookAt(new Vector3(CurrRoleFSMMgr.CurrRoleCtrl.LockEmeny.transform.position.x,
+                                                                                                                       CurrRoleFSMMgr.CurrRoleCtrl.transform.position.y,
+                                                                                                                       CurrRoleFSMMgr.CurrRoleCtrl.LockEmeny.transform.position.z));
+        }
+
+
     }
 
     /// <summary>

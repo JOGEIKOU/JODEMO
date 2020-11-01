@@ -18,7 +18,7 @@ public class CitySceneCtrl : MonoBehaviour
         {
             FingerEvent.Instance.OnFingerDrag += OnFingerDrag;
             FingerEvent.Instance.OnZoom += OnZoom;
-            FingerEvent.Instance.OnPlayerClick += OnPlayerClickGround;
+            FingerEvent.Instance.OnPlayerClick += OnPlayerClick;
         }
     }
 
@@ -30,6 +30,8 @@ public class CitySceneCtrl : MonoBehaviour
 
         GlobalInit.Instance.CurrPlayer = obj.GetComponent<RoleCtrl>();
         GlobalInit.Instance.CurrPlayer.Init(RoleType.MainPlayer, new RoleInfoBase() { NickName = GlobalInit.Instance.CurrRoleNickName,CurrHP=10000,MaxHP = 10000}, new RoleMainPlayerCityAI(GlobalInit.Instance.CurrPlayer));
+
+        UIPlayerInfo.Instance.SetPlayerInfo();
     }
 
 
@@ -54,15 +56,20 @@ public class CitySceneCtrl : MonoBehaviour
         }
     }
 
-    private void OnPlayerClickGround()
+    private void OnPlayerClick()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
         RaycastHit[] hitArr = Physics.RaycastAll(ray, Mathf.Infinity, 1 << LayerMask.NameToLayer("Role"));
+
         if (hitArr.Length > 0)
         {
             RoleCtrl hitRole = hitArr[0].collider.gameObject.GetComponent<RoleCtrl>();
+            if(hitRole.CurrRoleType == RoleType.Emeny)
+            {
+                GlobalInit.Instance.CurrPlayer.LockEmeny = hitRole;
+            }
         }
         else
         {
@@ -72,6 +79,7 @@ public class CitySceneCtrl : MonoBehaviour
                 {
                     if (GlobalInit.Instance.CurrPlayer != null)
                     {
+                        GlobalInit.Instance.CurrPlayer.LockEmeny = null;
                         GlobalInit.Instance.CurrPlayer.MoveTo(hitInfo.point);
                     }
                 }
@@ -98,7 +106,7 @@ public class CitySceneCtrl : MonoBehaviour
         {
             FingerEvent.Instance.OnFingerDrag -= OnFingerDrag;
             FingerEvent.Instance.OnZoom -= OnZoom;
-            FingerEvent.Instance.OnPlayerClick -= OnPlayerClickGround;
+            FingerEvent.Instance.OnPlayerClick -= OnPlayerClick;
         }
     }
 }

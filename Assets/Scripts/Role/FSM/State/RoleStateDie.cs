@@ -37,6 +37,11 @@ public class RoleStateDie : RoleStateAbs
         if (CurrRoleAnimatorStateInfo.IsName(RoleAnimatorName._Die.ToString())) ;
         {
             CurrRoleFSMMgr.CurrRoleCtrl.Animator.SetInteger(ToAnimatorCondition.CurrState.ToString(), (int)RoleState.Die);
+
+            if (CurrRoleAnimatorStateInfo.normalizedTime > 1)
+            {
+                CurrRoleFSMMgr.CurrRoleCtrl.OnRoleDie(CurrRoleFSMMgr.CurrRoleCtrl);
+            }
         }
     }
 

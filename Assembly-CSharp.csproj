@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{AB864DF7-92CE-9E72-865A-D9662D0EE234}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -240,8 +241,13 @@
     <Compile Include="Assets\Scripts\Test\BoxEntity.cs" />
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
+    <Compile Include="Assets\Scripts\Test\XMLReadingTest.cs" />
+    <Compile Include="Assets\Scripts\Test\XMLWRandEncrypt\DataManager.cs" />
+    <Compile Include="Assets\Scripts\Test\XMLWRandEncrypt\DevicePrice.cs" />
+    <Compile Include="Assets\Scripts\Test\XMLWRandEncrypt\XmlManager.cs" />
     <Compile Include="Assets\Scripts\UI\LayerUIMgr.cs" />
     <Compile Include="Assets\Scripts\UI\Other\RoleHeadBarRoot.cs" />
+    <Compile Include="Assets\Scripts\UI\Other\UIPlayerInfo.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneCityCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLoadingCtrl.cs" />
     <Compile Include="Assets\Scripts\UI\SceneUICtrl\UISceneLogonCtrl.cs" />
@@ -269,6 +275,7 @@
     <None Include="Assets\RoleModel\NPC\xianzi\动作参数.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+    <None Include="Assets\StreamingAssets\SystemDialogsInfo.xml" />
     <None Include="Assets\RoleModel\Player\cike\动画帧数刺客.txt" />
     <None Include="Assets\PlayerModel\最终幻想fbx\模型材质的shadow记得要改 unlit transparent cutout.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
@@ -283,6 +290,9 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
+    <None Include="Assets\Resources\XMLCollection\Test.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />

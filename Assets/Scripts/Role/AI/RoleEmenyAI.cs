@@ -24,6 +24,9 @@ public class RoleEmenyAI : IRoleAI
 
     public void DoAI()
     {
+        if (CurrRole.CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
+
+
         if(CurrRole.LockEmeny == null)
         {
             //IDEL
@@ -47,6 +50,12 @@ public class RoleEmenyAI : IRoleAI
         }
         else
         {
+            if(CurrRole.LockEmeny.CurrRoleInfo.CurrHP <= 0)
+            {
+                CurrRole.LockEmeny = null;
+                return;
+            }
+
             //もし目標あったら
             //１．もし自分とロックした敵の距離は自分の視界範囲より長いなら、ロックキャンセル        
             if (Vector3.Distance(CurrRole.transform.position, GlobalInit.Instance.CurrPlayer.transform.position) > CurrRole.ViewRange)
