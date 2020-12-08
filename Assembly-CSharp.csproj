@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{AB864DF7-92CE-9E72-865A-D9662D0EE234}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -204,15 +203,42 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraCtrl.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\GameDataTableParser.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Adler32.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Deflate.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\InfBlocks.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\InfCodes.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Inflate.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\InfTree.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\StaticTree.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\SupportClass.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Tree.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\ZInputStream.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Zlib.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\ZOutputStream.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\ZStream.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\ZStreamException.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\ZlibHelper.cs" />
     <Compile Include="Assets\Scripts\Common\EnumDefine.cs" />
     <Compile Include="Assets\Scripts\Common\FingerEvent.cs" />
     <Compile Include="Assets\Scripts\Common\GlobalInit.cs" />
+    <Compile Include="Assets\Scripts\Common\MMO_MemoryStream.cs" />
+    <Compile Include="Assets\Scripts\Common\Net\NetWorkHttp.cs" />
+    <Compile Include="Assets\Scripts\Common\Net\NetWorkSocket.cs" />
     <Compile Include="Assets\Scripts\Common\ResourcesMgr.cs" />
+    <Compile Include="Assets\Scripts\Common\RetValue.cs" />
     <Compile Include="Assets\Scripts\Common\SceneMgr.cs" />
     <Compile Include="Assets\Scripts\Core\Singleton.cs" />
     <Compile Include="Assets\Scripts\Core\UIBase.cs" />
     <Compile Include="Assets\Scripts\Core\UISceneBase.cs" />
     <Compile Include="Assets\Scripts\Core\UIWindowBase.cs" />
+    <Compile Include="Assets\Scripts\Data\Base\AbstractDBModel.cs" />
+    <Compile Include="Assets\Scripts\Data\Base\AbstractEntity.cs" />
+    <Compile Include="Assets\Scripts\Data\Create\JobDBModel.cs" />
+    <Compile Include="Assets\Scripts\Data\Create\JobEntity.cs" />
+    <Compile Include="Assets\Scripts\Data\Create\ProductDBModel.cs" />
+    <Compile Include="Assets\Scripts\Data\Create\ProductEntity.cs" />
+    <Compile Include="Assets\Scripts\Data\NetData\Entity\AccountEntity.cs" />
     <Compile Include="Assets\Scripts\Role\AI\IRoleAI.cs" />
     <Compile Include="Assets\Scripts\Role\AI\RoleEmenyAI.cs" />
     <Compile Include="Assets\Scripts\Role\AI\RoleMainPlayerCityAI.cs" />
@@ -239,6 +265,7 @@
     <Compile Include="Assets\Scripts\Test\Box2Entity.cs" />
     <Compile Include="Assets\Scripts\Test\BoxCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\BoxEntity.cs" />
+    <Compile Include="Assets\Scripts\Test\TestMMOMemory.cs" />
     <Compile Include="Assets\Scripts\Test\TestSceenCtrl.cs" />
     <Compile Include="Assets\Scripts\Test\TestScene.cs" />
     <Compile Include="Assets\Scripts\Test\XMLReadingTest.cs" />
@@ -275,7 +302,6 @@
     <None Include="Assets\RoleModel\NPC\xianzi\动作参数.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 3.shader" />
     <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
-    <None Include="Assets\StreamingAssets\SystemDialogsInfo.xml" />
     <None Include="Assets\RoleModel\Player\cike\动画帧数刺客.txt" />
     <None Include="Assets\PlayerModel\最终幻想fbx\模型材质的shadow记得要改 unlit transparent cutout.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
@@ -290,9 +316,7 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 2.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
-    <None Include="Assets\Resources\XMLCollection\Test.xml">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Assets\Resources\XMLCollection\Test.xml" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text.shader" />
@@ -524,6 +548,9 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/UnityProjets/2018.4.20f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>

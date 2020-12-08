@@ -239,3 +239,4 @@ C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\As
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp.dll
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\Temp\bin\Debug\LitJson.dll

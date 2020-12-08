@@ -238,3 +238,4 @@ C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\As
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp-firstpass.csproj.CopyComplete
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Xyhai\OneDrive\桌面\MyStudy\GitProject\youyouDemo\JODEMO\Temp\bin\Debug\LitJson.dll

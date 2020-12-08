@@ -293,6 +293,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/UnityProjets/2018.4.20f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>

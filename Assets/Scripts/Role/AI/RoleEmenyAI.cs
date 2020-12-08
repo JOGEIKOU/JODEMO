@@ -21,7 +21,6 @@ public class RoleEmenyAI : IRoleAI
     /// </summary>
     private float m_NextAttackTime = 0f;
 
-
     public void DoAI()
     {
         if (CurrRole.CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
