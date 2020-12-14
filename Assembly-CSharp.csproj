@@ -239,6 +239,7 @@
     <Compile Include="Assets\Scripts\Data\Create\ProductDBModel.cs" />
     <Compile Include="Assets\Scripts\Data\Create\ProductEntity.cs" />
     <Compile Include="Assets\Scripts\Data\NetData\Entity\AccountEntity.cs" />
+    <Compile Include="Assets\Scripts\Data\Proto\TestProto.cs" />
     <Compile Include="Assets\Scripts\Role\AI\IRoleAI.cs" />
     <Compile Include="Assets\Scripts\Role\AI\RoleEmenyAI.cs" />
     <Compile Include="Assets\Scripts\Role\AI\RoleMainPlayerCityAI.cs" />
