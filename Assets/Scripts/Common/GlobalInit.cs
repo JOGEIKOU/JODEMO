@@ -8,6 +8,13 @@ using System.Collections;
 
 public class GlobalInit : MonoBehaviour 
 {
+    //委托原型
+    public delegate void OnReceiveProtoHandler(ushort protoCode, byte[] buffer);
+
+    //定义委托事件
+    public OnReceiveProtoHandler OnReceiveProto;
+
+
     #region パラメータ
     /// <summary>
     /// ニックネームKEY
