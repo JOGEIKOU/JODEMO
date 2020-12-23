@@ -410,6 +410,24 @@
     <Reference Include="LitJson">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/LitJson.dll</HintPath>
     </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -424,24 +442,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>C:/Users/Xyhai/OneDrive/桌面/MyStudy/GitProject/youyouDemo/JODEMO/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Users/Xyhai/OneDrive/桌面/UnityProjets/2018.4.20f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
