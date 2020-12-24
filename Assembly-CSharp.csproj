@@ -203,9 +203,11 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraCtrl.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\Crc16.cs" />
     <Compile Include="Assets\Scripts\Common\Core\EventDispatcher.cs" />
     <Compile Include="Assets\Scripts\Common\Core\GameDataTableParser.cs" />
     <Compile Include="Assets\Scripts\Common\Core\IProto.cs" />
+    <Compile Include="Assets\Scripts\Common\Core\SecurityUtil.cs" />
     <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Adler32.cs" />
     <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\Deflate.cs" />
     <Compile Include="Assets\Scripts\Common\Core\zlib_NET_104\InfBlocks.cs" />
