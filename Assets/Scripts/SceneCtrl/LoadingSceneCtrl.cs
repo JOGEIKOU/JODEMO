@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadingSceneCtrl : MonoBehaviour
 {
@@ -16,8 +18,23 @@ public class LoadingSceneCtrl : MonoBehaviour
 
     private void Start()
     {
+        DelegateDefine.Instance.OnSceneLoadOK += OnSceneLoadOK;
         LayerUIMgr.Instance.Reset();
         StartCoroutine(LoadingScene());
+    }
+
+    private void OnDestroy()
+    {
+        DelegateDefine.Instance.OnSceneLoadOK -= OnSceneLoadOK;
+    }
+
+
+    private void OnSceneLoadOK()
+    {
+        if(m_UILoadingCtrl != null)
+        {
+            Destroy(m_UILoadingCtrl.gameObject);
+        }
     }
 
     private IEnumerator LoadingScene()
@@ -31,10 +48,14 @@ public class LoadingSceneCtrl : MonoBehaviour
             case SceneType.City:
                 strSceneName = "TestDemo";
                 break;
+            case SceneType.ShaMo:
+                strSceneName = "GameScene_ShaMo";
+                break;
             default:
                 break;
         }
-        m_Async =  Application.LoadLevelAsync(strSceneName);
+        
+        m_Async = SceneManager.LoadSceneAsync(strSceneName,LoadSceneMode.Additive);
         m_Async.allowSceneActivation = false;
         yield return m_Async;
     }

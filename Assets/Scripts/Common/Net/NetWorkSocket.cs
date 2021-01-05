@@ -10,26 +10,8 @@ using UnityEngine;
 /// <summary>
 /// 网络传输
 /// </summary>
-public class NetWorkSocket : MonoBehaviour
+public class NetWorkSocket : SingletonMono<NetWorkSocket>
 {
-    #region  单例模式
-    private static NetWorkSocket instance;
-
-    public static NetWorkSocket Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                GameObject obj = new GameObject("NetWorkSocket");
-                DontDestroyOnLoad(obj);
-                instance = obj.GetOrCreatComponent<NetWorkSocket>();
-            }
-            return instance;
-        }
-    }
-    #endregion
-
     #region 发送消息所需变量
     //发送消息队列
     private Queue<byte[]> m_SendQueue = new Queue<byte[]>();
@@ -59,8 +41,14 @@ public class NetWorkSocket : MonoBehaviour
     /// </summary>
     private Socket m_Client;
 
+    //=============================================继承父类=====================================================
 
-    private void Update()
+    protected override void OnStart()
+    {
+        base.OnStart();
+    }
+
+    protected override void OnUpdate()
     {
         #region 从队列中获取数据
         while (true)
@@ -134,17 +122,17 @@ public class NetWorkSocket : MonoBehaviour
         #endregion
     }
 
-    /// <summary>
-    /// 销毁物体的时候
-    /// </summary>
-    public void OnDdestory()
+    protected override void BeforeOnDestory()
     {
-        if(m_Client != null && m_Client.Connected)
+        base.BeforeOnDestory();
+        if (m_Client != null && m_Client.Connected)
         {
             m_Client.Shutdown(SocketShutdown.Both);
             m_Client.Close();
         }
     }
+
+    //==========================================================================================================
 
     /// <summary>
     /// 链接到socket服务器

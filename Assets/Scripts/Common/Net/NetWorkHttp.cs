@@ -6,25 +6,8 @@ using System;
 /// <summary>
 /// Http通讯管理
 /// </summary>
-public class NetWorkHttp : MonoBehaviour
+public class NetWorkHttp : SingletonMono<NetWorkHttp>
 {
-    #region  单例模式
-    private static NetWorkHttp instance;
-
-    public static NetWorkHttp Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                GameObject obj = new GameObject("NetWorkHttp");
-                DontDestroyOnLoad(obj);
-                instance = obj.GetOrCreatComponent<NetWorkHttp>();
-            }
-            return instance;
-        }
-    }
-    #endregion
 
     #region 属性
     /// <summary>
@@ -51,9 +34,10 @@ public class NetWorkHttp : MonoBehaviour
     }
     #endregion
 
-    private void Start()
+    protected override void OnStart()
     {
         m_CallBackArgs = new CallBackArgs();
+        base.OnStart();
     }
 
     #region 发送Web数据 SendData

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// シーンマネージャー
@@ -18,16 +19,25 @@ public class SceneMgr : Singleton<SceneMgr>
     public void LoadToLogOn()
     {
         CurrentSceneType = SceneType.LogOn;
-        
-        Application.LoadLevel("Loading");
+        SceneManager.LoadSceneAsync("SceneLoadingCtrl");
     }
 
     /// <summary>
-    /// 町シーンに行く
+    /// 去村庄
     /// </summary>
     public void LoadToCity()
     {
         CurrentSceneType = SceneType.City;
-        Application.LoadLevel("Loading");
+        SceneManager.LoadSceneAsync("SceneLoadingCtrl");
     }
+
+    /// <summary>
+    /// 去沙漠
+    /// </summary>
+    public void LoadToShaMo()
+    {
+        CurrentSceneType = SceneType.City;
+        SceneManager.LoadSceneAsync("SceneLoadingCtrl");
+    }
+
 }

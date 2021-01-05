@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/TestDemo.unity
     guid: fe785c61eb438b64a9b1d19d04149ee2
   - enabled: 1
-    path: Assets/Scenes/Loading.unity
+    path: Assets/Scenes/SceneLoadingCtrl.unity
     guid: 9ead4132edeb2964ab894cb34b1e457d
+  - enabled: 1
+    path: Assets/Scenes/GameScene_ShaMo.unity
+    guid: 18d4fb97707b7e147aeed042fa4645d2
   m_configObjects: {}
