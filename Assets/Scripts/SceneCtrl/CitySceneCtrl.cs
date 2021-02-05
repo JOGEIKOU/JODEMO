@@ -12,7 +12,7 @@ public class CitySceneCtrl : MonoBehaviour
 
     private void Awake()
     {
-        SceneUIMgr.Instance.LoadSceneUI(SceneUIMgr.SceneUIType.MainCity);
+        //SceneUIMgr.Instance.LoadSceneUI(SceneUIMgr.SceneUIType.MainCity);
 
         if (FingerEvent.Instance != null)
         {

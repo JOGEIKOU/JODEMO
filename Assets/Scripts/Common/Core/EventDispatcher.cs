@@ -74,5 +74,69 @@ public class EventDispatcher : Singleton<EventDispatcher>
     }
 
 
+    //====================================================================================================
 
+    //按钮的点击事件的委托和原型
+    public delegate void OnBtnClickHandler(params object[] param);
+    private Dictionary<string, List<OnBtnClickHandler>> dic_ButtonClick = new Dictionary<string, List<OnBtnClickHandler>>();
+
+    /// <summary>
+    /// 添加按钮点击监听
+    /// </summary>
+    /// <param name="btnKey"></param>
+    /// <param name="handler"></param>
+    public void AddBtnEventListener(string btnKey, OnBtnClickHandler handler)
+    {
+        if (dic_ButtonClick.ContainsKey(btnKey))
+        {
+            dic_ButtonClick[btnKey].Add(handler);
+        }
+        else
+        {
+            List<OnBtnClickHandler> lstHandler = new List<OnBtnClickHandler>();
+            lstHandler.Add(handler);
+            dic_ButtonClick[btnKey] = lstHandler;
+        }
+    }
+
+    /// <summary>
+    /// 移除按钮点击监听
+    /// </summary>
+    /// <param name="protoCode"></param>
+    /// <param name="handler"></param>
+    public void RemoveBtnEventListener(string btnKey, OnBtnClickHandler handler)
+    {
+        if (dic_ButtonClick.ContainsKey(btnKey))
+        {
+            List<OnBtnClickHandler> lstHandler = dic_ButtonClick[btnKey];
+            lstHandler.Remove(handler);
+            if (lstHandler.Count == 0)
+            {
+                dic_ButtonClick.Remove(btnKey);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 派发按钮点击
+    /// </summary>
+    /// <param name="protoCode"></param>
+    /// <param name="buffer"></param>
+    public void DispatchBtn(string btnKey, params object[] param)
+    {
+        if (dic_ButtonClick.ContainsKey(btnKey))
+        {
+            List<OnBtnClickHandler> lstHandler = dic_ButtonClick[btnKey];
+            if (lstHandler != null && lstHandler.Count > 0)
+            {
+                for (int i = 0; i < lstHandler.Count; i++)
+                {
+                    if (lstHandler[i] != null)
+                    {
+                        lstHandler[i](param);
+                    }
+                }
+            }
+        }
+    }
 }

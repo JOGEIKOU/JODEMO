@@ -531,9 +531,9 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: 
-    4: 
-    7: ODIN_INSPECTOR;ODIN_INSPECTOR_3
+    1: STAT_TD;HOTFIX_ENABLE;ODIN_INSPECTOR;ODIN_INSPECTOR_3
+    4: STAT_TD;HOTFIX_ENABLE
+    7: STAT_TD;HOTFIX_ENABLE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

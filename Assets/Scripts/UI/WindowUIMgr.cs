@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 /// <summary>
 /// ウィンドウズUIマネージャ
 /// </summary>
 public class WindowUIMgr : Singleton<WindowUIMgr>
 {
 
-    private Dictionary<WindowUIType, UIWindowBase> m_DicWindow = new Dictionary<WindowUIType, UIWindowBase>();
+    private Dictionary<WindowUIType, UIWindowViewBase> m_DicWindow = new Dictionary<WindowUIType, UIWindowViewBase>();
 
     /// <summary>
     /// 開けているウィンドウズの数
@@ -35,9 +35,10 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
         if (!m_DicWindow.ContainsKey(type))
         {
             //enumの名前とプレハブの名前必ず同じ
-            obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan{0}", type.ToString()), cache: true);
+            obj = ResourcesMgr.Instance.Load(ResourcesMgr.ResourceType.UIWindow, string.Format("pan_{0}", type.ToString()), cache: true);
+            Debug.Log("得到注册窗口" + obj.name);
             if (obj == null) return null;
-            UIWindowBase windowBase = obj.GetComponent<UIWindowBase>();
+            UIWindowViewBase windowBase = obj.GetComponent<UIWindowViewBase>();
             if (windowBase == null) return null;
             m_DicWindow.Add(type, windowBase);
 
@@ -55,7 +56,7 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
                 case WindowUIContainerType.BottomRight:
                     break;
                 case WindowUIContainerType.Center:
-                    transParent = SceneUIMgr.Instance.CurrentUIScene.Container_Center;
+                    transParent = UISceneCtrl.Instance.CurrentUIScene.Container_Center;
                     break;
                 default:
                     break;
@@ -64,7 +65,7 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
             obj.transform.parent = transParent;
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localScale = Vector3.one;
-            NGUITools.SetActive(obj, false);
+            obj.gameObject.SetActive(false);
             StartShowWindow(windowBase, true);
         }
         else
@@ -73,7 +74,7 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
         }
      
         //layout 管理
-        LayerUIMgr.Instance.SetLayer(obj);
+        //LayerUIMgr.Instance.SetLayer(obj);
 
         return obj;
     }
@@ -99,7 +100,7 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// </summary>
     /// <param name="windowBase"></param>
     /// <param name="isOpen"></param>
-    private void StartShowWindow(UIWindowBase windowBase,bool isOpen)
+    private void StartShowWindow(UIWindowViewBase windowBase,bool isOpen)
     {
         switch (windowBase.showStyle)
         {
@@ -132,11 +133,11 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// </summary>
     /// <param name="obj"></param>
     /// <param name="isOpen"></param>
-    private void ShowNormal(UIWindowBase windowBase,bool isOpen)
+    private void ShowNormal(UIWindowViewBase windowBase,bool isOpen)
     {
         if(isOpen)
         {
-            NGUITools.SetActive(windowBase.gameObject, true);
+            windowBase.gameObject.SetActive(true);
         }
         else
         {
@@ -148,21 +149,27 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// 真ん中から拡大に
     /// </summary>
     /// <param name="isOpen"></param>
-    private void ShowCenterToBig(UIWindowBase windowBase, bool isOpen)
+    private void ShowCenterToBig(UIWindowViewBase windowBase, bool isOpen)
     {
-        TweenScale ts = windowBase.gameObject.GetOrCreatComponent<TweenScale>();
-        ts.animationCurve = GlobalInit.Instance.UIAnimationCurve;
-        ts.from = Vector3.zero;
-        ts.to = Vector3.one;
-        ts.duration = windowBase.duration;//経過時間
-        ts.SetOnFinished(() =>
+
+        windowBase.gameObject.SetActive(true);
+        windowBase.transform.localScale = Vector3.zero;
+        windowBase.transform.DOScale(Vector3.one, windowBase.duration)
+            .SetAutoKill(false)
+            .SetEase(GlobalInit.Instance.UIAnimationCurve)
+            .Pause().OnRewind(() =>
         {
-            if (!isOpen)
                 DestroyWindow(windowBase);
+        });
+
+        if(isOpen)
+        {
+            windowBase.transform.DOPlayForward();
         }
-        );
-        NGUITools.SetActive(windowBase.gameObject, true);
-        if (!isOpen) ts.Play(isOpen);
+        else
+        {
+            windowBase.transform.DOPlayBackwards();
+        }
     }
 
     /// <summary>
@@ -171,13 +178,12 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// <param name="windowBase"></param>
     /// <param name="dirType">0 = 上から下へ, 1 = 下から上に, 2 = 左から右に, 3 = 右から左に</param>
     /// <param name="isOpen"></param>
-    private void ShowFromDir(UIWindowBase windowBase,int dirType,bool isOpen)
+    private void ShowFromDir(UIWindowViewBase windowBase,int dirType,bool isOpen)
     {
-        TweenPosition tp = windowBase.gameObject.GetOrCreatComponent<TweenPosition>();
-        tp.animationCurve = GlobalInit.Instance.UIAnimationCurve;
+        windowBase.gameObject.SetActive(true);
 
         Vector3 from = Vector3.zero;
-        switch(dirType)
+        switch (dirType)
         {
             case 0:
                 from = new Vector3(0, 1000, 0);
@@ -192,18 +198,23 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
                 from = new Vector3(1400, 0, 0);
                 break;
         }
-        tp.from = from;
-        tp.to = Vector3.one;
-        tp.duration = windowBase.duration;//経過時間
-        tp.SetOnFinished(() =>
+        windowBase.transform.localPosition = from;
+        windowBase.transform.DOLocalMove(Vector3.zero,windowBase.duration)
+            .SetAutoKill(false)
+            .SetEase(GlobalInit.Instance.UIAnimationCurve)
+            .Pause().OnRewind(() =>
         {
-            if (!isOpen)
-                DestroyWindow(windowBase);
-        }
-        );
-        NGUITools.SetActive(windowBase.gameObject, true);
-        if (!isOpen) tp.Play(isOpen);
+            DestroyWindow(windowBase);
+        });
 
+        if (isOpen)
+        {
+            windowBase.transform.DOPlayForward();
+        }
+        else
+        {
+            windowBase.transform.DOPlayBackwards();
+        }
     }
 
     #endregion
@@ -212,7 +223,7 @@ public class WindowUIMgr : Singleton<WindowUIMgr>
     /// ウィンドウズUI潰す
     /// </summary>
     /// <param name="obj"></param>
-    public void DestroyWindow(UIWindowBase windowBase)
+    public void DestroyWindow(UIWindowViewBase windowBase)
     {
         LayerUIMgr.Instance.CheckOpenWindow();
         m_DicWindow.Remove(windowBase.CurrentUIType);
